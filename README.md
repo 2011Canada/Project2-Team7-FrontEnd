@@ -61,3 +61,6 @@ A Database backed Web-App that allows users (and guests*) to:
 - What foods go well with what drink 
 - Share on social media platform a custom recipe/ fav drink
 
+###ERD
+![](MixologyERD.png)
+
