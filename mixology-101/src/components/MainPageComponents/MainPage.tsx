@@ -1,7 +1,7 @@
 import React from 'react'
-import MainBody from './MainPageComponents/MainBody'
-import MainHeader from './MainPageComponents/MainHeader'
-import MainFooter from './MainPageComponents/MainFooter'
+import MainBody from './MainBody'
+import MainHeader from './MainHeader'
+import MainFooter from './MainFooter'
 
 
 const MainPage = ()=>{
