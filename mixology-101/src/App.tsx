@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {RegisterForm} from './components/RegisterForms/Register'
 import './App.css';
+import MainPage from './components/MainPage';
 
 
 
@@ -10,6 +11,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+<<<<<<< HEAD
       <h1>Mixology-101</h1>
        <Router>
         <div id = "root">
@@ -21,8 +23,12 @@ function App() {
           </header> 
       </Router> 
 
+=======
+      <MainPage />
+>>>>>>> origin/main-page
     </div>
   );
 }
+
 
 export default App;
