@@ -11,19 +11,18 @@ import MainPage from './components/MainPageComponents/MainPage';
 function App() {
   return (
     <div className="App">
-      <h1>Mixology-101</h1>
        <Router>
-        <div id = "root">
-        </div>  
+         <div >
           <header className="App-header">
             <Switch>
               <Route path = "/register" component = {RegisterForm}/>
               <Route path = "/home" component = {MainPage} />
             </Switch>
           </header> 
+          </div>  
       </Router> 
-
-    </div>
+    </div> 
+    
   );
 }
 
