@@ -31,6 +31,8 @@ export const LoginForm: React.FunctionComponent<ILoginProps> = (props) => {
         
         try {
             let user = await login(username, password)
+            //console.log("user: " + user.username);
+            //console.log("firstname: " + user.firstname);
             props.updateCurrentUser(user)
         }catch(e){
             changePassword("")
@@ -40,7 +42,8 @@ export const LoginForm: React.FunctionComponent<ILoginProps> = (props) => {
     return (
 
         (props.currentUser) ? 
-        <Redirect  to='/login'/>
+        
+        <Redirect  to='/' />
         :
         <form onSubmit={submitLogin}>
             <Grid
@@ -57,12 +60,17 @@ export const LoginForm: React.FunctionComponent<ILoginProps> = (props) => {
                     <TextField value={password} onChange={handlePasswordChange} id="password" label="Password" variant="outlined" type="password" />
                 </Grid>
                 <Grid item>
-                    <Button type="submit" variant="outlined">Submit</Button>
+                    <Button type="submit" variant="outlined" style={btnStyle}>Login</Button>
+                    
+                    <Button type="button" variant="outlined">Register</Button>
                 </Grid>
                     
             </Grid>
         </form>
     )
 
-
 }
+
+var btnStyle = {
+    margin: "0 20px 0 0"
+};

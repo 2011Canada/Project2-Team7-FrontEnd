@@ -1,17 +1,17 @@
 import { mixologyClient } from "."
 
 
-
-
 export const login = async (username:string, password:string) => {
-    let credentials = {
-        username,
-        password
-    }
+//   let credentials = {
+//         username,
+//         password
+//     }  
 
     try{
-        let res = await mixologyClient.post('/login', credentials)
-        
+
+        let res = await mixologyClient.post('/user/login/'+ username + '/' + password) //, credentials)
+       // console.log("aa: " + res.data.username);
+        if(res.data.username === undefined) alert("USERNAME AND PASSWORD IS NOT VALID")
         return res.data
     }catch(e){
         console.log(e);

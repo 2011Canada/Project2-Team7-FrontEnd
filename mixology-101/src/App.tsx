@@ -1,5 +1,4 @@
 import React, {useState}from 'react';
-import logo from './logo.svg';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { LoginForm } from './components/login/LoginForm';
 import { User } from './models/User';
@@ -15,6 +14,7 @@ function App() {
           <Route path="/login">
             <LoginForm currentUser={user} updateCurrentUser={changeUser} />
           </Route>
+          
         </Switch>
       </Router>
     </div>
