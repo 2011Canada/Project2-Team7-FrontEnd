@@ -1,6 +1,7 @@
 import React, {useState}from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { LoginForm } from './components/login/LoginForm';
+import { Home } from './components/home/Home';
 import { User } from './models/User';
 import './App.css';
 
@@ -14,7 +15,9 @@ function App() {
           <Route path="/login">
             <LoginForm currentUser={user} updateCurrentUser={changeUser} />
           </Route>
-          
+          <Route path="/home">
+            <Home />
+          </Route>
         </Switch>
       </Router>
     </div>

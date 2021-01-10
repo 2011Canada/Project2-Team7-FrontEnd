@@ -43,7 +43,7 @@ export const LoginForm: React.FunctionComponent<ILoginProps> = (props) => {
 
         (props.currentUser) ? 
         
-        <Redirect  to='/' />
+        <Redirect  to='/home' />
         :
         <form onSubmit={submitLogin}>
             <Grid
