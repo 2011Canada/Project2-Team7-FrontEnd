@@ -24,3 +24,21 @@ export const login = async (username:string, password:string) => {
     }
 
 }
+
+
+export const reviewList = async (drinkId:number) => {
+
+        try{
+            let res = await mixologyClient.get('/review/' + drinkId) 
+            return res.data
+        }catch(e){
+            console.log(e)
+            if(e.response){
+                throw new Error(e.response.data)
+            } else {
+                throw new Error("CANNOT LOGIN")
+            }
+            
+        }
+    
+    }
