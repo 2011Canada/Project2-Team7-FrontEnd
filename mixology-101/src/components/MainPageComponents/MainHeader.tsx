@@ -15,13 +15,6 @@ const MainHeader = ()=>{
 
 
 
-
-
-
-
-
-
-
     return(
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-logo"  href="#"><img style={logoStyle} src="logo2.png" alt="Image showing logo"/></a>
