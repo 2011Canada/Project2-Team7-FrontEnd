@@ -2,6 +2,7 @@
 import React, {useState}from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { LoginForm } from './components/login/LoginForm';
+import { Logout } from './components/login/Logout';
 import { RegisterForm } from './components/RegisterForms/Register';
 import { ViewReview } from './components/review/ViewReview';
 import { User } from './models/User';
@@ -20,6 +21,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/login"> <LoginForm currentUser={user} updateCurrentUser={changeUser} /> </Route>
+          <Route path="/logout"> <Logout /> </Route>
           <Route path="/review"> <ViewReview /> </Route>
           <Route path = "/register" component = {RegisterForm}/>
           <Route path = "/home" component = {MainPage} />

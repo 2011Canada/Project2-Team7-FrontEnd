@@ -33,7 +33,7 @@ const MainHeader = ()=>{
   } else {
       $loginBtn = (  
         <li className="nav-item">
-          <a className="nav-link" href="../login">Logout</a>
+          <a className="nav-link" href="../logout">Logout</a>
         </li>
       )
       $registBtn = null
