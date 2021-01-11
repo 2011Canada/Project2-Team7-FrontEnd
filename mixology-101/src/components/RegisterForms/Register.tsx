@@ -8,27 +8,26 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import MainHeader from '../MainPageComponents/MainHeader';
 
-/*
-interface IRegisterProps{
-  updateCurrentUser: (u:User) => void
-  currentUser:User
-}
-*/
+import { Route } from 'react-router';
+import { Link as RLink } from 'react-router-dom';
 function Copyright() {
   return (
+    <>
+    <Route path ="/home"/>
+      
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <RLink color="inherit" to = "/home">
         Mixology-101
-      </Link>{' '}
+      </RLink>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
+    </>
   );
 }
 
@@ -55,66 +54,21 @@ const useStyles = makeStyles((theme) => ({
 export const RegisterForm: React.FunctionComponent<any> = () =>{
   const classes = useStyles();
 
-  /*
-  const [firstName, changeFirstName] = useState("")
-  const [lastName, changeLastName] = useState("")
-  const [username, changeUsername] = useState("")
-  const [password, changePassword] = useState("")
-
-  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e)
-    changeUsername(e.target.value)
-    console.log(e.target.value)
-  }
-
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e)
-    changePassword(e.target.value)
-    console.log(e.target.value)
-
-  }
-  const handleFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e)
-    changeFirstName(e.target.value)
-    console.log(e.target.value)
-   
-  }
-  const handleLastNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e)
-    changeLastName(e.target.value)
-    console.log(e.target.value)
-  
-  }
-
-  const submitRegister = async (e:SyntheticEvent) =>{
-    e.preventDefault() // prevent default button functionality to refresh page
-    
-    try{
-      let newUser = await mixologyRegister(firstName,lastName,username,password)
-      console.log(newUser)
-      props.updateCurrentUser(newUser)
-      console.log(newUser)
-    }catch(e){
-      console.log(e.message)
-    }
-  }
-  */
- 
  const {register, handleSubmit} = useForm();
 
 
  const submitRegister = async (data:any)=>{
      console.log(data)
-
       await axios.post('http://localhost:8080/user',{
-         "firstName": data.firstname,
+         "firstname": data.firstname,
          "id": 0,
-         "lastName": data.lastname,
-         "password": data.userpassword,
+         "lastname": data.lastname,
+         "password": data.password,
          "username": data.username
       })
       .then((response)=>{
          console.log("succefully registered!", response.data)
+         
       })
       .catch((err)=>{console.log(err)})
  }
@@ -128,7 +82,7 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
       <CssBaseline />
       <div className={classes.paper}>
         
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h4">
           Register
         </Typography>
         <form className={classes.form} onSubmit ={handleSubmit(submitRegister)}>
@@ -136,13 +90,12 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="firstname"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
+                id="firstname"
                 label="First Name"
-                //onChange = {handleFirstNameChange}
                 autoFocus
                 inputRef = {register}
               />
@@ -152,10 +105,9 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
+                id="lastname"
                 label="Last Name"
-                name="lastName"
-                //onChange = {handleLastNameChange}
+                name="lastname"
                 autoComplete="lastname"
                 inputRef={register}
               />
@@ -168,7 +120,6 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
                 id="username"
                 label="username"
                 name="username"
-              // onChange = {handleUsernameChange}
                 autoComplete="username"
                 inputRef={register}
               />
@@ -182,7 +133,6 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
                 label="Password"
                 type="password"
                 id="password"
-               // onChange = {handlePasswordChange}
                 autoComplete="current-password"
                 inputRef={register}
               />
@@ -194,15 +144,15 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
             variant="contained"
             color="primary"
             className={classes.submit}
-            //onSubmit = {submitRegister}
           >
             Sign Up
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Route path = "/home"/> 
+              <RLink to = "/home" >
                 Already have an account? Sign in
-              </Link>
+              </RLink>
             </Grid>
           </Grid>
         </form>
