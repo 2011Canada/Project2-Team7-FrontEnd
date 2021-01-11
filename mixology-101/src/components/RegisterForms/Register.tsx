@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SyntheticEvent, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -8,6 +8,15 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+
+import { User } from '../../models/User'
+import { mixologyRegister } from '../../remote/mixology-functions';
+
+
+interface IRegisterProps{
+  updateCurrentUser: (u:User) => void
+  currentUser:User
+}
 
 function Copyright() {
   return (
@@ -42,9 +51,51 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const RegisterForm: React.FunctionComponent<any> = () =>{
+export const RegisterForm: React.FunctionComponent<IRegisterProps> = (props) =>{
   const classes = useStyles();
+  const [firstName, changeFirstName] = useState("")
+  const [lastName, changeLastName] = useState("")
+  const [username, changeUsername] = useState("")
+  const [password, changePassword] = useState("")
 
+  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e)
+    changeUsername(e.target.value)
+    console.log(e.target.value)
+  }
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e)
+    changePassword(e.target.value)
+    console.log(e.target.value)
+
+  }
+  const handleFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e)
+    changeFirstName(e.target.value)
+    console.log(e.target.value)
+   
+  }
+  const handleLastNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e)
+    changeLastName(e.target.value)
+    console.log(e.target.value)
+  
+  }
+
+  const submitRegister = async (e:SyntheticEvent) =>{
+    e.preventDefault() // prevent default button functionality to refresh page
+    
+    try{
+      let newUser = await mixologyRegister(firstName,lastName,username,password)
+      console.log(newUser)
+      props.updateCurrentUser(newUser)
+      console.log(newUser)
+    }catch(e){
+      console.log(e.message)
+    }
+  }
+  
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -53,7 +104,7 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
         <Typography component="h1" variant="h5">
           Register
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit ={submitRegister}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -64,6 +115,7 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
                 fullWidth
                 id="firstName"
                 label="First Name"
+                onChange = {handleFirstNameChange}
                 autoFocus
               />
             </Grid>
@@ -75,6 +127,7 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
                 id="lastName"
                 label="Last Name"
                 name="lastName"
+                onChange = {handleLastNameChange}
                 autoComplete="lname"
               />
             </Grid>
@@ -86,6 +139,7 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
                 id="username"
                 label="username"
                 name="username"
+                onChange = {handleUsernameChange}
                 autoComplete="username"
               />
             </Grid>
@@ -98,6 +152,7 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
                 label="Password"
                 type="password"
                 id="password"
+                onChange = {handlePasswordChange}
                 autoComplete="current-password"
               />
             </Grid>
@@ -108,6 +163,7 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
             variant="contained"
             color="primary"
             className={classes.submit}
+            //onSubmit = {submitRegister}
           >
             Sign Up
           </Button>
@@ -120,7 +176,7 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
+      <Box mt={4}>
         <Copyright />
       </Box>
     </Container>
