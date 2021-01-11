@@ -1,4 +1,4 @@
-import React, {SyntheticEvent, useState} from 'react';
+import React, {Component, Props, SyntheticEvent, useState} from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -6,8 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {mixologyAddReview} from "../../remote/mixology-functions";
-import {Review} from "../../models/Review";
+import axios from 'axios';
+import { useForm } from "react-hook-form";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -30,36 +30,44 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+export const AddReviewForm: React.FunctionComponent<any> = () =>{
 
-export const addRevieForm: (props: any) => void = (props) => {
   const classes = useStyles();
-  const [description, changDescription] = useState("")
-  const [rate, changeRating] = useState("")
 
-  const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e)
-    changDescription(e.target.value)
-    console.log(e.target.value)
-  }
+  const {register, handleSubmit} = useForm();
 
-  const handleRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e)
-    changeRating(e.target.value)
-    console.log(e.target.value)
-  }
+  const submitAddReview = async (data:any) => {
+    console.log(data)
 
+    await axios.post('http://localhost:8080/review',{
+      "author": {
+          "firstname": "string",
+          "id": 7,
+          "lastname": "string",
+          "password": "string",
+          "username": "string"
+    },
+      "description": data.description,
+        "drink": {
+      "degree": 10,
+          "drinkCreator": {
+            "firstname": "azib",
+            "id": 2,
+            "lastname": "azib",
+            "password": "azib",
+            "username": "azib"
+      },
+      "id": 1,
+          "name": "water"
+    },
+      "id": 0,
+        "rate": data.rate
 
-  const submitAddReview = async (e: SyntheticEvent) => {
-    e.preventDefault() // prevent default button functionality to refresh page
-
-    try {
-      let newReview = await mixologyAddReview(description, rate, 1, 1)
-      console.log(newReview)
-      props.updateCurrentReview(newReview)
-      console.log(newReview)
-    } catch (e) {
-      console.log(e.message)
-    }
+    })
+        .then((response)=>{
+          console.log("succefully submitted your review!", response.data)
+        })
+        .catch((err)=>{console.log(err)})
   }
 
     return (
@@ -70,30 +78,28 @@ export const addRevieForm: (props: any) => void = (props) => {
             <Typography component="h1" variant="h5">
               Add Review
             </Typography>
-            <form className={classes.form} noValidate onSubmit={submitAddReview}>
+            <form className={classes.form} noValidate onSubmit={ handleSubmit(submitAddReview)}>
               <Grid container spacing={2}>
 
                 <Grid item xs={12}>
                   <TextField
                       variant="outlined"
-                      required
-                      fullWidth
-                      id="rating"
+                      id="rate"
                       label="Rating"
-                      name="rating"
-                      autoComplete="rating"
+                      name="rate"
+                      autoComplete="rate"
+                      inputRef={register}
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
                       variant="outlined"
-                      required
-                      fullWidth
                       name="description"
                       label="Description"
                       type="description"
                       id="description"
                       autoComplete="description"
+                      inputRef={register}
                   />
                 </Grid>
               </Grid>

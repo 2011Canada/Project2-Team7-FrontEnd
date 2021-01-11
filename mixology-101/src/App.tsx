@@ -1,13 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { AddReviewForm} from '../src/components/AddReviewForms/AddReview';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Mixology-101</h1>
-    </div>
-  );
+
+export default function App() {
+    return (
+        <div className="App">
+            <Router>
+                <div>
+                    <header className="App-header">
+                        <Switch>
+                            <Route path="/addReview" component  = {AddReviewForm}/>
+                        </Switch>
+                    </header>
+                </div>
+            </Router>
+        </div>
+
+    );
 }
-
-export default App;
