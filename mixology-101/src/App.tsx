@@ -4,6 +4,9 @@ import {RegisterForm} from './components/RegisterForms/Register'
 import './App.css';
 import MainPage from './components/MainPageComponents/MainPage';
 
+//new reg implementation
+import RegisterComponent from './components/RegisterForms/Register2'
+
 
 
 
@@ -17,6 +20,7 @@ function App() {
             <Switch>
               <Route path = "/register" component = {RegisterForm}/>
               <Route path = "/home" component = {MainPage} />
+              <Route path = "/register2" component = {RegisterComponent} />
             </Switch>
           </header> 
           </div>  
