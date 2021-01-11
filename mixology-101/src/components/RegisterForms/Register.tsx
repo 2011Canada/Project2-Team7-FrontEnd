@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React, {  } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -9,15 +9,16 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import { User } from '../../models/User'
-import { mixologyRegister } from '../../remote/mixology-functions';
+import axios from 'axios';
+import { useForm } from "react-hook-form";
+import MainHeader from '../MainPageComponents/MainHeader';
 
-
+/*
 interface IRegisterProps{
   updateCurrentUser: (u:User) => void
   currentUser:User
 }
-
+*/
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -51,8 +52,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const RegisterForm: React.FunctionComponent<IRegisterProps> = (props) =>{
+export const RegisterForm: React.FunctionComponent<any> = () =>{
   const classes = useStyles();
+
+  /*
   const [firstName, changeFirstName] = useState("")
   const [lastName, changeLastName] = useState("")
   const [username, changeUsername] = useState("")
@@ -95,16 +98,40 @@ export const RegisterForm: React.FunctionComponent<IRegisterProps> = (props) =>{
       console.log(e.message)
     }
   }
-  
+  */
+ 
+ const {register, handleSubmit} = useForm();
+
+
+ const submitRegister = async (data:any)=>{
+     console.log(data)
+
+      await axios.post('http://localhost:8080/user',{
+         "firstName": data.firstname,
+         "id": 0,
+         "lastName": data.lastname,
+         "password": data.userpassword,
+         "username": data.username
+      })
+      .then((response)=>{
+         console.log("succefully registered!", response.data)
+      })
+      .catch((err)=>{console.log(err)})
+ }
+
+ 
   return (
+  
+  <>
+    <MainHeader/>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-
+        
         <Typography component="h1" variant="h5">
           Register
         </Typography>
-        <form className={classes.form} onSubmit ={submitRegister}>
+        <form className={classes.form} onSubmit ={handleSubmit(submitRegister)}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -115,8 +142,9 @@ export const RegisterForm: React.FunctionComponent<IRegisterProps> = (props) =>{
                 fullWidth
                 id="firstName"
                 label="First Name"
-                onChange = {handleFirstNameChange}
+                //onChange = {handleFirstNameChange}
                 autoFocus
+                inputRef = {register}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -127,8 +155,9 @@ export const RegisterForm: React.FunctionComponent<IRegisterProps> = (props) =>{
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                onChange = {handleLastNameChange}
-                autoComplete="lname"
+                //onChange = {handleLastNameChange}
+                autoComplete="lastname"
+                inputRef={register}
               />
             </Grid>
             <Grid item xs={12}>
@@ -139,8 +168,9 @@ export const RegisterForm: React.FunctionComponent<IRegisterProps> = (props) =>{
                 id="username"
                 label="username"
                 name="username"
-                onChange = {handleUsernameChange}
+              // onChange = {handleUsernameChange}
                 autoComplete="username"
+                inputRef={register}
               />
             </Grid>
             <Grid item xs={12}>
@@ -152,8 +182,9 @@ export const RegisterForm: React.FunctionComponent<IRegisterProps> = (props) =>{
                 label="Password"
                 type="password"
                 id="password"
-                onChange = {handlePasswordChange}
+               // onChange = {handlePasswordChange}
                 autoComplete="current-password"
+                inputRef={register}
               />
             </Grid>
           </Grid>
@@ -180,6 +211,7 @@ export const RegisterForm: React.FunctionComponent<IRegisterProps> = (props) =>{
         <Copyright />
       </Box>
     </Container>
+  </>
   );
 }
 

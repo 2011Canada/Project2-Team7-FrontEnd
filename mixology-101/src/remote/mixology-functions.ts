@@ -8,11 +8,10 @@ export const mixologyRegister = async (firstName:string, lastName:string, userna
         username,
         password
     }
+    
     try{
-        let res = await mixologyBaseClient.post('/user', credentials)//.then((response)=> console.log(response.data))
+        let res = await mixologyBaseClient.post('/user', credentials)
         console.log(res.data)
-        console.log(res)
-        
         return res.data
     }catch(e){
         console.log(e);
@@ -23,3 +22,12 @@ export const mixologyRegister = async (firstName:string, lastName:string, userna
         }
     }
 }
+/* also didnt reutrn a first name and last name 
+let res = await mixologyBaseClient.post('/user', credentials)
+        .then(res =>{
+            console.log(res.data)  
+        })
+        .catch(e=>{
+            console.log(e.response.data)
+        })
+        */
