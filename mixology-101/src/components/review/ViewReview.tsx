@@ -10,11 +10,14 @@ export class ViewReview extends React.Component<any,any> {
            listCnt: 0,
            drinkName: "" 
        }
+      
    }
 
    async componentDidMount() {
+        let drinkId = window.location.href.substr(-1)
+        
         try {
-            let res = await reviewList(3);
+            let res = await reviewList(drinkId);
             this.setState({ currentReviewList: res });
             this.setState({drinkName: res[0].drink.name})
             while(this.state.listCnt < res.length){

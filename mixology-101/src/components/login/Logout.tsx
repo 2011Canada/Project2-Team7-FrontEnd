@@ -3,10 +3,16 @@ import { Redirect } from 'react-router'
 
 
 
-export const Logout: React.FunctionComponent = () => {
-    sessionStorage.clear()
-    return (
-        <Redirect  to='/home' />
-    )
-
+export class Logout extends React.Component  {
+    async componentDidMount() {
+        sessionStorage.clear()
+    }
+   
+    render(){
+        return (
+            <Redirect  to='/home' />
+        );
+    
+    }
+    
 }

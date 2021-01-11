@@ -6,7 +6,7 @@ const logoStyle = {
   borderRadius: '50%',
   padding: '5px'
 }
-
+  
 var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
 var isGuest = true;
 if(userInfo != null){
@@ -14,7 +14,7 @@ if(userInfo != null){
 }
 
 const MainHeader = ()=>{
-  
+
   let $loginBtn = null;
   let $registBtn = null;
 

@@ -54,14 +54,4 @@ if(userInfo != null){
     )
 }
 
-function setIsGuest(){
-   // alert("SETISGUEST")
-    // if(currentUser == null){
-    //     isGuest = true;
-    //     alert("true")
-    // }else{
-    //     isGuest = false;
-    //     alert("false")
-    // }
-}
     export default ProfileBar

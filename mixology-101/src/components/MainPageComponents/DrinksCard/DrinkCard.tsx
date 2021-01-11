@@ -17,6 +17,8 @@ const imageStyle = {
 const DrinkCard:any = (props:any)=>{
 
     console.log(props)
+    let reviewUrl = "../review/" + props.id;
+    
     return(
     <div className="col-12 col-sm-6 col-md-6 col-lg-3 my-3 text-center">
         <div className="card" style={cardStyle}>
@@ -24,17 +26,13 @@ const DrinkCard:any = (props:any)=>{
             <div className="card-body">
                 <h5 ><strong>{props.name}</strong>   </h5>
                 <small className="badge badge-pill bg-warning text-dark "> {props.degree}% {/*will be an object later */}</small> &nbsp;
-                <p className="text-right btn badge btn-secondary">Reviews</p>
+                <p className="text-right btn badge btn-secondary"><input type="hidden" value={props.id} /><a href={reviewUrl} data-custom-value={props.id}>Reviews</a> </p>
                 <p className="card-text">Created by: {props.creator}</p>
                 
             </div>
         </div>
 
-        {/* <div className="chip">
-            <img src="img_avatar.png" alt="Person" width="96" height="96">
-            John Doe 
-            <span className="closebtn" onClick={ReactDOM.findDOMNode(this).parentNode.style.display='none'}>&times;</span>
-        </div> */}
+        
     </div>
 
 

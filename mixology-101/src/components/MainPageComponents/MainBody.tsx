@@ -45,7 +45,7 @@ const MainBody = ()=>{
             </div>
             <div className="row">
                 {drinks.map((element)=>{
-                    return(<DrinkCard key={element.id}  name={element.name} degree={element.degree} creator={element.drinkCreator.username}/>)  
+                    return(<DrinkCard id={element.id}  name={element.name} degree={element.degree} creator={element.drinkCreator.username}/>)  
                 })}
             </div>
         </div>

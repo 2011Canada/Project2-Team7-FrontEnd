@@ -26,7 +26,7 @@ export const login = async (username:string, password:string) => {
 }
 
 
-export const reviewList = async (drinkId:number) => {
+export const reviewList = async (drinkId:any) => {
 
         try{
             let res = await mixologyClient.get('/review/' + drinkId) 
