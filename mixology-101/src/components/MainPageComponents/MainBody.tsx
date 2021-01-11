@@ -35,9 +35,10 @@ const MainBody = ()=>{
 
 
 
-
-
+    
     return(
+        
+
         <div className="container-fluid" style={bodyStyle}>
             <div className="row">
                 <ProfileBar />

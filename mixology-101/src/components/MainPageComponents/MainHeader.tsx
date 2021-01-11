@@ -1,4 +1,4 @@
-import React, { Component, useState} from 'react';
+import React, {useState} from 'react';
 
 const logoStyle = {
   width: '4.5rem',
@@ -7,13 +7,37 @@ const logoStyle = {
   padding: '5px'
 }
 
+var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+var isGuest = true;
+if(userInfo != null){
+    isGuest = false;
+}
+
 const MainHeader = ()=>{
+  
+  let $loginBtn = null;
+  let $registBtn = null;
 
+  if (isGuest) {
+      $loginBtn = (
 
-  const [user, setUser] = useState(null)
-
-
-
+        <li className="nav-item">
+          <a className="nav-link" href="../login">Login</a>
+        </li>
+      )
+      $registBtn = (
+         <li className="nav-item">
+          <a className="nav-link" href="#">Register</a>
+        </li>
+      )
+  } else {
+      $loginBtn = (  
+        <li className="nav-item">
+          <a className="nav-link" href="../login">Logout</a>
+        </li>
+      )
+      $registBtn = null
+  }
 
     return(
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,12 +53,8 @@ const MainHeader = ()=>{
           <li className="nav-item active">
             <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">Login</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link " href="#">Register</a>
-          </li>
+          {$loginBtn}
+          {$registBtn}
         </ul>
         
         <form className="form-inline my-2 my-lg-0">
@@ -43,7 +63,6 @@ const MainHeader = ()=>{
         </form>
 
       </div>
-   
 
     </nav>
 

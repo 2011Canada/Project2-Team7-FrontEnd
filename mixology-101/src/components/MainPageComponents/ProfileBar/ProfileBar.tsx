@@ -13,9 +13,18 @@ const imageStyle = {
     border: "3px lightblue solid",
     margin: "0.8rem"
 }
+    
+var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+var isGuest = true;
+if(userInfo != null){
+    isGuest = false;
+    console.log("userInfo.id: " + userInfo.id)
+    console.log("userInfo.username: " + userInfo.username)
+    console.log("userInfo.firstname: " + userInfo.firstname)
+    console.log("userInfo.lastname: " + userInfo.lastname)
+}
 
-
-const ProfileBar = () =>{
+ const ProfileBar = () =>{
 
     
     return(
@@ -23,8 +32,8 @@ const ProfileBar = () =>{
             <div className="row">
                 <div className="col-12 col-sm-4">
                     <img style={imageStyle} src="https://i.pravatar.cc/50" alt="Profile Picture of user"/>
-                    <h5>Azib RousDomJin</h5>
-                    <p>username : jin | id: 54</p>
+                    <h5>{!isGuest? (userInfo.firstname + "  " + userInfo.lastname) : "Guest"} </h5>
+                    <p>{!isGuest? ("username : " +userInfo.username +" | id: " + userInfo.id) : ""}</p>
                 </div>
                 <div style={{}} className="col-12 col-sm-4">
                     <form>
@@ -43,9 +52,16 @@ const ProfileBar = () =>{
             </div>
         </div>
     )
-
-
-
 }
 
+function setIsGuest(){
+   // alert("SETISGUEST")
+    // if(currentUser == null){
+    //     isGuest = true;
+    //     alert("true")
+    // }else{
+    //     isGuest = false;
+    //     alert("false")
+    // }
+}
     export default ProfileBar
