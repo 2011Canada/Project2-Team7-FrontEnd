@@ -6,13 +6,11 @@ import { Logout } from './components/login/Logout';
 import { RegisterForm } from './components/RegisterForms/Register';
 import { ViewReview } from './components/review/ViewReview';
 import  DrinkMain  from './components/Drinks/DrinkMain';
+import { AddReviewForm} from '../src/components/AddReviewForms/AddReview';
+
 import { User } from './models/User';
 import './App.css';
 import MainPage from './components/MainPageComponents/MainPage';
-
-
-
-
 
 function App() {
   const [user, changeUser] = useState<User>()
@@ -27,10 +25,9 @@ function App() {
           <Route path = "/register" component = {RegisterForm}/>
           <Route path = "/home" component = {MainPage} />
           <Route path = "/drinks" component = {DrinkMain} />
+          <Route path="/addReview" component  = {AddReviewForm}/>
         </Switch>
       </Router>
     </div>
   );
 }
-
-export default App;
