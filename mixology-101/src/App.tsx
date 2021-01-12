@@ -12,11 +12,10 @@ import { User } from './models/User';
 import './App.css';
 import MainPage from './components/MainPageComponents/MainPage';
 
-function App() {
+export default function App() {
   const [user, changeUser] = useState<User>()
   return (
     <div className="App">
-      <h1>Mixology-101</h1>
       <Router>
         <Switch>
           <Route path="/login"> <LoginForm currentUser={user} updateCurrentUser={changeUser} /> </Route>
