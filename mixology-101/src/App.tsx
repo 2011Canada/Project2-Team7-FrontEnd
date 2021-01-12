@@ -6,7 +6,7 @@ import { Logout } from './components/login/Logout';
 import { RegisterForm } from './components/RegisterForms/Register';
 import { ViewReview } from './components/review/ViewReview';
 import  DrinkMain  from './components/Drinks/DrinkMain';
-import { AddReviewForm} from '../src/components/AddReviewForms/AddReview';
+import { AddReviewForm} from './components/AddReviewForms/AddReview';
 
 import { User } from './models/User';
 import './App.css';
@@ -31,3 +31,5 @@ function App() {
     </div>
   );
 }
+
+export default App;

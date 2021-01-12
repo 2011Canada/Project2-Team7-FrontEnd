@@ -35,6 +35,7 @@ export const LoginForm: React.FunctionComponent<ILoginProps> = (props) => {
             //console.log("firstname: " + user.firstname);
             props.updateCurrentUser(user)
             sessionStorage.setItem("userInfo", JSON.stringify(user))
+            window.location.reload(true);
         }catch(e){
             changePassword("")
         }

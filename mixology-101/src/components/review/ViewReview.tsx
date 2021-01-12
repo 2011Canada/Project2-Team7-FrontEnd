@@ -38,26 +38,8 @@ export class ViewReview extends React.Component<any,any> {
         }
         
         return (
-            //<Review />
-            <div>
-            DrinkName:  {this.state.drinkName}
-            <table>
-            <thead>
-                <tr>
-                    <th>REVIEW_ID</th><th>DESCRIPTION</th><th>RATE</th><th>EVALUATOR</th>
-                </tr>
-            </thead>
-            <tbody>
-                {returnList}
-            </tbody>
-            </table>
-        </div>
-        );
+            <Review  key={this.state.drinkId} id={this.state.drinkId} reviewList={this.state.currentReviewList}/>
+        )
+            
     }
 }
-
-
-/*
-
- 
-*/
