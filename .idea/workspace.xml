@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4d2173ec-c132-421a-96ed-4b1c82e57f31" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1mi2NwWoPv9TP5iiuT31YBtMGyr" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Project2-Team7-BackEnd" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Users\syeda\Project2-Team7-FrontEnd\mixology-101\node_modules\typescript\lib" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4d2173ec-c132-421a-96ed-4b1c82e57f31" name="Default Changelist" comment="" />
+      <created>1609962056231</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609962056231</updated>
+      <workItem from="1609962057251" duration="1685000" />
+      <workItem from="1610033763983" duration="191000" />
+      <workItem from="1610034000581" duration="2582000" />
+      <workItem from="1610053966351" duration="8039000" />
+      <workItem from="1610128720781" duration="3755000" />
+      <workItem from="1610211265155" duration="26000" />
+      <workItem from="1610211512925" duration="8000" />
+      <workItem from="1610213894600" duration="9000" />
+      <workItem from="1610384382423" duration="8334000" />
+      <workItem from="1610397372766" duration="5126000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-2635" y="-302" key="FileChooserDialogImpl" timestamp="1610394188903">
+      <screen x="-3286" y="-418" width="1920" height="1040" />
+    </state>
+    <state x="-2635" y="-302" key="FileChooserDialogImpl/-1366.-104.1366.728/-3286.-418.1920.1040/0.0.1366.728@-3286.-418.1920.1040" timestamp="1610394188903" />
+    <state x="463" y="81" key="FileChooserDialogImpl/-1366.-104.1366.728/-3286.-418.1920.1040/0.0.1366.728@0.0.1366.728" timestamp="1610211518161" />
+    <state x="-2797" y="-321" key="NewModule_or_Project.wizard" timestamp="1610213902304">
+      <screen x="-3286" y="-418" width="1920" height="1040" />
+    </state>
+    <state x="-2797" y="-321" key="NewModule_or_Project.wizard/-1366.-104.1366.728/-3286.-418.1920.1040/0.0.1366.728@-3286.-418.1920.1040" timestamp="1610213902304" />
+    <state x="348" y="68" key="NewModule_or_Project.wizard/-1366.-104.1366.728/-3286.-418.1920.1040/0.0.1366.728@0.0.1366.728" timestamp="1610211519519" />
+    <state x="389" y="97" width="587" height="534" key="find.popup" timestamp="1610057403571">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="389" y="97" width="587" height="534" key="find.popup/-1366.-104.1366.728/-3286.-418.1920.1040/0.0.1366.728@0.0.1366.728" timestamp="1610057403571" />
+  </component>
+</project>
