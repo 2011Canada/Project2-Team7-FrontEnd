@@ -1,8 +1,8 @@
-import {User} from "./User";
+
 
 export class Review {
-    userid:number
-    drinkid:number
-    rate:number
+    userId:number
+    drinkId:number
     description:string
+    rate:number
 }
