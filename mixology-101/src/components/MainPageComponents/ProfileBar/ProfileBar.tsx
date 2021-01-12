@@ -34,14 +34,26 @@ const SearchButtonStyling = {
 const ProfileBar = (props:any) =>{
 
 
+  
+var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+var   isGuest = true;
+
+  if(userInfo != null){
+      isGuest = false;
+  } else{
+      isGuest = true;
+  }
+
+
+
 
     return(
         <div style={barStyle} className="col-12">
             <div className="row">
                 <div className="col-12 col-sm-4">
                     <img style={imageStyle} src="https://i.pravatar.cc/50" alt="Profile Picture of user"/>
-                    <h5>Azib RousDomJin</h5>
-                    <p>username : jin | id: 54</p>
+                    <h5>{!isGuest? (userInfo.firstname + "  " + userInfo.lastname) : "Guest"} </h5>
+                    <p>{!isGuest? ("username : " +userInfo.username +" | id: " + userInfo.id) : ""}</p>
                 </div>
 
                 {/* SEARCH PARAMS */}
@@ -84,8 +96,5 @@ const ProfileBar = (props:any) =>{
         </div>
     )
 
-
-
 }
-
-    export default ProfileBar
+export default ProfileBar
