@@ -5,6 +5,7 @@ import { LoginForm } from './components/login/LoginForm';
 import { Logout } from './components/login/Logout';
 import { RegisterForm } from './components/RegisterForms/Register';
 import { ViewReview } from './components/review/ViewReview';
+import  DrinkMain  from './components/Drinks/DrinkMain';
 import { User } from './models/User';
 import './App.css';
 import MainPage from './components/MainPageComponents/MainPage';
@@ -25,6 +26,7 @@ function App() {
           <Route path="/review"> <ViewReview /> </Route>
           <Route path = "/register" component = {RegisterForm}/>
           <Route path = "/home" component = {MainPage} />
+          <Route path = "/drinks" component = {DrinkMain} />
         </Switch>
       </Router>
     </div>

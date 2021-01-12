@@ -8,10 +8,14 @@ const logoStyle = {
 }
   
 var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
-var isGuest = true;
-if(userInfo != null){
-    isGuest = false;
-}
+var   isGuest = true;
+  if(userInfo != null){
+      isGuest = false;
+  } else{
+      isGuest = true;
+  }
+
+
 
 const MainHeader = ()=>{
 
@@ -20,7 +24,6 @@ const MainHeader = ()=>{
 
   if (isGuest) {
       $loginBtn = (
-
         <li className="nav-item">
           <a className="nav-link" href="../login">Login</a>
         </li>

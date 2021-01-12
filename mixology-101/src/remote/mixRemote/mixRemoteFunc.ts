@@ -28,17 +28,36 @@ export const login = async (username:string, password:string) => {
 
 export const reviewList = async (drinkId:any) => {
 
-        try{
-            let res = await mixologyClient.get('/review/' + drinkId) 
-            return res.data
-        }catch(e){
-            console.log(e)
-            if(e.response){
-                throw new Error(e.response.data)
-            } else {
-                throw new Error("CANNOT LOGIN")
-            }
-            
+    try{
+        let res = await mixologyClient.get('/review/' + drinkId) 
+        return res.data
+    }catch(e){
+        console.log(e)
+        if(e.response){
+            throw new Error(e.response.data)
+        } else {
+            throw new Error("CANNOT LOGIN")
         }
-    
+        
     }
+
+}
+
+
+export const drinkInfo = async (drinkName:any) => {
+
+    try{
+        let res = await mixologyClient.get('/drinks/drinkName/' + drinkName) 
+        console.log(res.data)
+        return res.data
+    }catch(e){
+        console.log(e)
+        if(e.response){
+            throw new Error(e.response.data)
+        } else {
+            throw new Error("CANNOT LOGIN")
+        }
+        
+    }
+
+}

@@ -2,6 +2,7 @@ import { BorderAllOutlined, Translate } from '@material-ui/icons'
 import { profile } from 'console'
 import React from 'react'
 import SearchBar from './SearchBar'
+import $ from 'jquery';
 
 const barStyle = {
     backgroundColor: "salmon"
@@ -13,16 +14,17 @@ const imageStyle = {
     border: "3px lightblue solid",
     margin: "0.8rem"
 }
-    
+
+  
 var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
-var isGuest = true;
-if(userInfo != null){
-    isGuest = false;
-    console.log("userInfo.id: " + userInfo.id)
-    console.log("userInfo.username: " + userInfo.username)
-    console.log("userInfo.firstname: " + userInfo.firstname)
-    console.log("userInfo.lastname: " + userInfo.lastname)
-}
+var   isGuest = true;
+
+  if(userInfo != null){
+      isGuest = false;
+  } else{
+      isGuest = true;
+  }
+
 
  const ProfileBar = () =>{
 

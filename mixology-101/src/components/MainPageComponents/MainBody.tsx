@@ -5,6 +5,7 @@ import ProfileBar from './ProfileBar/ProfileBar'
 import axios from 'axios'
 
 
+
 const bodyStyle = {
   minHeight: '87vh',
   backgroundColor: "whitesmoke",
@@ -14,6 +15,7 @@ const bodyStyle = {
 const styleHead = {
     height: '200vh'
 }
+
 
 
 const MainBody = ()=>{
@@ -45,7 +47,7 @@ const MainBody = ()=>{
             </div>
             <div className="row">
                 {drinks.map((element)=>{
-                    return(<DrinkCard id={element.id}  name={element.name} degree={element.degree} creator={element.drinkCreator.username}/>)  
+                    return(<DrinkCard key={element.id} id={element.id}  name={element.name} degree={element.degree} creator={element.drinkCreator.username}/>)  
                 })}
             </div>
         </div>

@@ -6,7 +6,6 @@ import MainFooter from './MainFooter'
 
 const MainPage = ()=>{
 
-
     return(
         <div>
             <MainHeader />

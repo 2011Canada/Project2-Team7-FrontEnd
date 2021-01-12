@@ -40,6 +40,10 @@ export const LoginForm: React.FunctionComponent<ILoginProps> = (props) => {
         }
     }
 
+    
+
+
+
     return (
 
         (props.currentUser) ? 
