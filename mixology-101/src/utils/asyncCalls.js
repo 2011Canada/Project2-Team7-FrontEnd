@@ -1,15 +1,26 @@
 import axios from 'axios';
+import DrinkCard from '../components/MainPageComponents/DrinksCard/DrinkCard'
 
-// Make a request for a user with a given ID
-axios.get('/user?ID=12345')
-  .then(function (response) {
-    // handle success
-    console.log(response);
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .then(function () {
-    // always executed
-  });
+// This is a sandbox for making calls
+
+async function getAllDrinks(){
+
+// await axios.get('http://localhost:8080/drinks')
+//   .then(function (response) {
+//     // handle success
+//     console.log(response);
+//     return (
+//       response.map((element)=>{
+//         <DrinkCard key={element.id} name={element.name} degree={element.degree} creator={element.drinkCreator.username}/>
+//       })
+
+//     )
+//   })
+//   .catch(function (error) {
+//     // handle error
+//     console.log(error);
+//   })
+
+}
+
+export default getAllDrinks
