@@ -6,19 +6,17 @@ import { Logout } from './components/login/Logout';
 import { RegisterForm } from './components/RegisterForms/Register';
 import { ViewReview } from './components/review/ViewReview';
 import  DrinkMain  from './components/Drinks/DrinkMain';
+import { AddReviewForm} from './components/AddReviewForms/AddReview';
+
 import { User } from './models/User';
 import './App.css';
 import MainPage from './components/MainPageComponents/MainPage';
 
-
-
-
-
-function App() {
+export default function App() {
   const [user, changeUser] = useState<User>()
   return (
     <div className="App">
-      <h1>Mixology-101</h1>
+
       <Router>
         <Switch>
           <Route path="/login"> <LoginForm currentUser={user} updateCurrentUser={changeUser} /> </Route>
@@ -27,10 +25,10 @@ function App() {
           <Route path = "/register" component = {RegisterForm}/>
           <Route path = "/home" component = {MainPage} />
           <Route path = "/drinks" component = {DrinkMain} />
+          <Route path="/addReview" component  = {AddReviewForm}/>
         </Switch>
       </Router>
     </div>
+
   );
 }
-
-export default App;

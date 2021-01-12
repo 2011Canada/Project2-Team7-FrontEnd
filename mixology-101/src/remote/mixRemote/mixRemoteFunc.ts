@@ -36,7 +36,7 @@ export const reviewList = async (drinkId:any) => {
         if(e.response){
             throw new Error(e.response.data)
         } else {
-            throw new Error("CANNOT LOGIN")
+            throw new Error("CANNOT VIEW")
         }
         
     }

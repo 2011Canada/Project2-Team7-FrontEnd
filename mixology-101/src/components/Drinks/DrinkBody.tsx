@@ -1,6 +1,6 @@
 import React from 'react';
 import { drinkInfo } from '../../remote/mixRemote/mixRemoteFunc'
-
+import { Review } from '../review/Review'
 
 
 const imageStyle = {
@@ -60,7 +60,10 @@ export class DrinkBody extends React.Component<any,any> {
             </div>
             <div className="container-fluid">
                 <div className="row">
-                   Review
+                    Review
+                </div>
+                <div className="row">
+                  <Review />
                 </div>
             </div>
         </div>
