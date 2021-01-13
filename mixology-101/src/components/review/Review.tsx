@@ -4,7 +4,6 @@ import { reviewList } from '../../remote/mixRemote/mixRemoteFunc'
 export class Review extends React.Component<any, any> {
     
     constructor(props:any){
-        
         super(props);
         console.log("constructor: propss.drinkId: " + props.drinkId)
         this.state = {
@@ -16,10 +15,8 @@ export class Review extends React.Component<any, any> {
         
     }
 
-    async componentWillMount() {
+    async componentDidMount() {
         try{
-            //this.setState({ drinkId: props.drinkId});
-           console.log("Aaaaa" + this.state.drinkId)
             let res = await reviewList(this.state.drinkId);
             this.setState({ currentReviewList: res });
             this.setState({drinkName: res[0].drink.name})
@@ -28,7 +25,10 @@ export class Review extends React.Component<any, any> {
             this.setState({listCnt:this.state.listCnt+1})
         }
         }catch(e){
-
+            console.log(e)
+            if(e.response){
+                throw new Error(e.response.data)
+            } 
         }
         
     }
@@ -40,11 +40,11 @@ export class Review extends React.Component<any, any> {
         for(const [index, value] of this.state.currentReviewList.entries()){
             returnList.push(<tr><td>{value.id}</td><td>{value.description}</td><td>{value.rate}</td><td>{value.author.username}</td></tr>)
         }
-        
+       
         return (
             <div>
-                DrinkName: {this.state.drinkName}
-            <table>
+                 <h5 >DrinkName: {this.state.drinkName}</h5>
+            <table style={{ marginLeft:20}}>
             <thead>
                 <tr>
                     <th>REVIEW_ID</th><th>DESCRIPTION</th><th>RATE</th><th>EVALUATOR</th>

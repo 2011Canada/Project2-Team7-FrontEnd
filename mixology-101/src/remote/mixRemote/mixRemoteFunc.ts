@@ -61,3 +61,21 @@ export const drinkInfo = async (drinkName:any) => {
     }
 
 }
+
+
+export const ingredientsList = async (drinkId:any) => {
+
+    try{
+        let res = await mixologyClient.get('/drinks/ingredients/' + drinkId) 
+        return res.data
+    }catch(e){
+        console.log(e)
+        if(e.response){
+            throw new Error(e.response.data)
+        } else {
+            throw new Error("CANNOT VIEW")
+        }
+        
+    }
+
+}
