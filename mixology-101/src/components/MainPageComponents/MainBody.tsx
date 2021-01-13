@@ -41,14 +41,11 @@ const MainBody = ()=>{
     }
     
     
-    
-    call === 1 ? getDrinks() : console.log("none")
+    //call === 1 ? getDrinks() : console.log("none")
 
-   
-
-
-
+ 
  useEffect(() => {
+    getDrinks()
     // console.log("does this update? call= ", call)
     }, []);
 

@@ -26,8 +26,8 @@ const SearchButtonStyling = {
     left: "50%",
     transform: "Translate(-50%, -50%)",
     border: "1px solid #020202",
-    // "-webkit-box-shadow": "5px 5px 15px 5px #fcfcfc",
-    "box-shadow": "2.5px 2.5px 15px 2.5px #e7caca"
+   // "-webkit-box-shadow": "5px 5px 15px 5px #fcfcfc",
+    //"box-shadow": "2.5px 2.5px 15px 2.5px #e7caca"
 }
 
 

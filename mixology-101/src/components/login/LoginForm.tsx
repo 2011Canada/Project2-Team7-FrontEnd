@@ -3,7 +3,10 @@ import { Button, Grid, TextField } from '@material-ui/core'
 import { Redirect } from 'react-router'
 import { User } from '../../models/User'
 import { login } from '../../remote/mixRemote/mixRemoteFunc'
-
+import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 
 interface ILoginProps{
     updateCurrentUser: (u:User) => void
@@ -11,10 +14,30 @@ interface ILoginProps{
 }
 
 
+const useStyles = makeStyles((theme) => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+      width: '100%', // Fix IE 11 issue.
+      marginTop: theme.spacing(3),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+  }));
+
 export const LoginForm: React.FunctionComponent<ILoginProps> = (props) => {
     const [username, changeUsername] = useState("")
     const [password, changePassword] = useState("")
-    
+    const classes = useStyles();
 
     const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         changeUsername(e.target.value)
@@ -41,40 +64,46 @@ export const LoginForm: React.FunctionComponent<ILoginProps> = (props) => {
         }
     }
 
-    
-
-
-
     return (
 
         (props.currentUser) ? 
         
         <Redirect  to='/home' />
         :
-        <form onSubmit={submitLogin}>
-            <Grid
-                container
-                direction="column"
-                justify="flex-start"
-                alignItems="center"
-                spacing={2}
-            >
-                <Grid item>
-                    <TextField value={username} onChange={handleUsernameChange} id="username" label="Username" variant="outlined" autoComplete="off" />
+        <>
+        <Container component="main" maxWidth="xs">
+            <CssBaseline />
+            <div className={classes.paper}>
+        
+            <Typography component="h1" variant="h4">
+                Login
+            </Typography>
+            <form  className={classes.form} onSubmit={submitLogin}>
+                <Grid
+                    container
+                    direction="column"
+                    justify="flex-start"
+                    alignItems="center"
+                    spacing={2}
+                >
+                    <Grid item>
+                        <TextField value={username} onChange={handleUsernameChange} id="username" label="Username" variant="outlined" autoComplete="off" />
+                    </Grid>
+                    <Grid item>
+                        <TextField value={password} onChange={handlePasswordChange} id="password" label="Password" variant="outlined" type="password" />
+                    </Grid>
+                    <Grid item>
+                        <Button type="submit" variant="outlined" style={btnStyle}>Login</Button>
+                        
+                        <Button type="button" variant="outlined" href={"/register"}>Register</Button>
+                    </Grid>
+                        
                 </Grid>
-                <Grid item>
-                    <TextField value={password} onChange={handlePasswordChange} id="password" label="Password" variant="outlined" type="password" />
-                </Grid>
-                <Grid item>
-                    <Button type="submit" variant="outlined" style={btnStyle}>Login</Button>
-                    
-                    <Button type="button" variant="outlined">Register</Button>
-                </Grid>
-                    
-            </Grid>
-        </form>
+            </form>
+            </div>
+        </Container>
+        </>
     )
-
 }
 
 var btnStyle = {
