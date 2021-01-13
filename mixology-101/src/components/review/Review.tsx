@@ -1,52 +1,12 @@
 import React from 'react';
 import { reviewList } from '../../remote/mixRemote/mixRemoteFunc'
 
-/*export const Review: React.FunctionComponent<any> = (props) => {
-
-    
-    try {
-        let res = reviewList(props.drinkId)
-        
-        res.then((data)=>{
-            console.log(data)
-        })
-        
-        // for(const [index, value] of res.entries()){
-        //     returnList.push(<tr><td>{value.id}</td><td>{value.description}</td><td>{value.rate}</td><td>{value.author.username}</td></tr>)
-        // }
-    } catch (e) {
-        console.log(e);
-    }
-
-    
-    
-    return(
-        <div>
-        DrinkName:  {props.drinkName}
-        <table>
-        <thead>
-            <tr>
-                <th>REVIEW_ID</th><th>DESCRIPTION</th><th>RATE</th><th>EVALUATOR</th>
-            </tr>
-        </thead>
-        <tbody>
-           
-        </tbody>
-        </table>
-    </div>
-    );
-
-}
-export default Review
-*/
-
-
-
-
 export class Review extends React.Component<any, any> {
     
     constructor(props:any){
+        
         super(props);
+        console.log("constructor: propss.drinkId: " + props.drinkId)
         this.state = {
             drinkId: props.drinkId,
             currentReviewList: [],
@@ -58,8 +18,9 @@ export class Review extends React.Component<any, any> {
 
     async componentWillMount() {
         try{
+            //this.setState({ drinkId: props.drinkId});
+           console.log("Aaaaa" + this.state.drinkId)
             let res = await reviewList(this.state.drinkId);
-            console.log("Aaaaa" + res)
             this.setState({ currentReviewList: res });
             this.setState({drinkName: res[0].drink.name})
             while(this.state.listCnt < res.length){
