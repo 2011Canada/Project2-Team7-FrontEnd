@@ -1,10 +1,11 @@
 import React from 'react'
 import { Review } from './Review'
-import { drinkInfo } from '../../remote/mixRemote/mixRemoteFunc'
+import { drinkInfoById } from '../../remote/mixRemote/mixRemoteFunc'
 
 export class ViewReview extends React.Component<any,any> {
     
     constructor(props:any){
+        console.log("constructor")
         super(props);
         console.log("drinkbody_constructor_props:"+ props.drinkId)
         this.state = {
@@ -18,19 +19,18 @@ export class ViewReview extends React.Component<any,any> {
 
     
     async componentWillMount() {
+       // console.log("componentWillMount")
             let _drinkId = window.location.href.substr(-1)
             this.setState({drinkId: _drinkId})
-            let name = window.location.href.substring(29,)
-            console.log("drinkName: " + name)
-            let res = drinkInfo(name)
+            let res = drinkInfoById(_drinkId)
             res.then((data) =>{
-                console.log("in DrinkBody, res.id: " + data.id)
+               //console.log("data.id: " + data.id)
                 this.setState({drinkId: data.id})
                 this.setState({drinkName: data.name})
                 this.setState({degree: data.degree})
                 //this.setState({Ingredient})
                 this.setState({creator: (data.drinkCreator.firstname +" "+ data.drinkCreator.lastname)})
-                console.log(this.state.drinkName)
+
             })
     }
 

@@ -7,6 +7,7 @@ export class Ingredients extends React.Component<any, any> {
         
         super(props);
         this.state = {
+            key: 0,
             drinkId: props.drinkId,
             ingredientsList: []
         }
@@ -16,6 +17,7 @@ export class Ingredients extends React.Component<any, any> {
     async componentWillMount() {
         try{
             let res = await ingredientsList(this.state.drinkId);
+            this.setState({ key: res.id });
             this.setState({ ingredientsList: res });
         }catch(e){
             console.log(e)

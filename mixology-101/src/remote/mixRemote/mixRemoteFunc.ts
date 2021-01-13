@@ -44,18 +44,37 @@ export const reviewList = async (drinkId:any) => {
 }
 
 
-export const drinkInfo = async (drinkName:any) => {
+export const drinkInfoByName = async (drinkName:any) => {
 
     try{
         let res = await mixologyClient.get('/drinks/drinkName/' + drinkName) 
-        console.log(res.data)
+       // console.log("drinkInfo:" + res.data)
         return res.data
     }catch(e){
         console.log(e)
         if(e.response){
             throw new Error(e.response.data)
         } else {
-            throw new Error("CANNOT LOGIN")
+            throw new Error("CANNOT FIND DRINK INFORMATION")
+        }
+        
+    }
+
+}
+
+
+export const drinkInfoById = async (drinkId:any) => {
+
+    try{
+        let res = await mixologyClient.get('/drinks/find/' + drinkId) 
+       // console.log("drinkInfo:" + res.data)
+        return res.data
+    }catch(e){
+        console.log(e)
+        if(e.response){
+            throw new Error(e.response.data)
+        } else {
+            throw new Error("CANNOT FIND DRINK INFORMATION")
         }
         
     }
@@ -66,14 +85,14 @@ export const drinkInfo = async (drinkName:any) => {
 export const ingredientsList = async (drinkId:any) => {
 
     try{
-        let res = await mixologyClient.get('/drinks/ingredients/' + drinkId) 
+        let res = await mixologyClient.get('/ingredients/drink/' + drinkId) 
         return res.data
     }catch(e){
         console.log(e)
         if(e.response){
             throw new Error(e.response.data)
         } else {
-            throw new Error("CANNOT VIEW")
+            throw new Error("CANNOT FIND INGREDIENTS LIST")
         }
         
     }

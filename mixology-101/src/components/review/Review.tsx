@@ -5,8 +5,9 @@ export class Review extends React.Component<any, any> {
     
     constructor(props:any){
         super(props);
-        console.log("constructor: propss.drinkId: " + props.drinkId)
+        console.log("Review_constructor_props_drinkId: " + props.drinkId)
         this.state = {
+            key: 0,
             drinkId: props.drinkId,
             currentReviewList: [],
             listCnt: 0,
@@ -15,11 +16,12 @@ export class Review extends React.Component<any, any> {
         
     }
 
-    async componentDidMount() {
+    async componentWillMount() {
         try{
             let res = await reviewList(this.state.drinkId);
+            this.setState({ key: res.id });
             this.setState({ currentReviewList: res });
-            this.setState({drinkName: res[0].drink.name})
+            this.setState({ drinkName: res[0].drink.name})
             while(this.state.listCnt < res.length){
                 console.log(this.state.currentReviewList[this.state.listCnt]);
             this.setState({listCnt:this.state.listCnt+1})

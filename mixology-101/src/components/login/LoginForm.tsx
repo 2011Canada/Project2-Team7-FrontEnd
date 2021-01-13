@@ -95,7 +95,7 @@ export const LoginForm: React.FunctionComponent<ILoginProps> = (props) => {
                     <Grid item>
                         <Button type="submit" variant="outlined" style={btnStyle}>Login</Button>
                         
-                        <Button type="button" variant="outlined">Register</Button>
+                        <Button type="button" variant="outlined" href={"/register"}>Register</Button>
                     </Grid>
                         
                 </Grid>

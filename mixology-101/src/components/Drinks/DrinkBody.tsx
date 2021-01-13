@@ -1,5 +1,5 @@
 import React from 'react';
-import { drinkInfo } from '../../remote/mixRemote/mixRemoteFunc'
+import { drinkInfoByName } from '../../remote/mixRemote/mixRemoteFunc'
 import { Review } from '../review/Review'
 import { Ingredients } from './Ingredients'
 
@@ -33,7 +33,7 @@ export class DrinkBody extends React.Component<any,any> {
      componentWillMount() {
         let name = window.location.href.substring(29,)
         console.log("drinkName: " + name)
-        let res = drinkInfo(name)
+        let res = drinkInfoByName(name)
         res.then((data) =>{
             console.log("in DrinkBody, res.id: " + data.id)
             this.setState({drinkId: data.id})
