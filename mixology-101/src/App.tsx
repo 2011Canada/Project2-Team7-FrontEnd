@@ -19,13 +19,13 @@ export default function App() {
 
       <Router>
         <Switch>
-          <Route path="/login"> <LoginForm currentUser={user} updateCurrentUser={changeUser} /> </Route>
-          <Route path="/logout"> <Logout /> </Route>
-          <Route path="/review"> <ViewReview /> </Route>
+          <Route path = "/login"> <LoginForm currentUser={user} updateCurrentUser={changeUser} /> </Route>
+          <Route path = "/logout"> <Logout /> </Route>
+          <Route path = "/review"> <ViewReview /> </Route>
           <Route path = "/register" component = {RegisterForm}/>
           <Route path = "/home" component = {MainPage} />
           <Route path = "/drinks" component = {DrinkMain} />
-          <Route path="/addReview" component  = {AddReviewForm}/>
+          <Route path = "/addReview" component  = {AddReviewForm}/>
         </Switch>
       </Router>
     </div>
