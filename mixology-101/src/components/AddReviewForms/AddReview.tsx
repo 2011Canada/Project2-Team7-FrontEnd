@@ -39,6 +39,16 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
   const submitAddReview = async (data:any) => {
     console.log(data)
     var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+    var drinkName = JSON.parse(sessionStorage.getItem("drinkName"));
+    var drinkDegree = JSON.parse(sessionStorage.getItem("drinkDegree"));
+    var drinkCreatorFirstName = JSON.parse(sessionStorage.getItem("drinkCreatorFirstName"));
+    var drinkCreatorLastName = JSON.parse(sessionStorage.getItem("drinkCreatorLastName"));
+    var drinkCreatorId = JSON.parse(sessionStorage.getItem("drinkCreatorId"));
+    var drinkCreatorUsername = JSON.parse(sessionStorage.getItem("drinkCreatorUsername"));
+    var drinkCreatorPassword = JSON.parse(sessionStorage.getItem("drinkCreatorPassword"));
+    var drinkId = JSON.parse(sessionStorage.getItem("drinkId"));
+
+
 
     await axios.post('http://localhost:8080/review',{
 
@@ -51,16 +61,16 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
       },
       "description": data.description,
         "drink": {
-      "degree": 10,
+      "degree": drinkDegree,
           "drinkCreator": {
-            "firstname": "azib",
-            "id": 2,
-            "lastname": "azib",
-            "password": "azib",
-            "username": "azib"
+            "firstname": drinkCreatorFirstName,
+            "id": drinkCreatorId,
+            "lastname":drinkCreatorLastName,
+            "password": drinkCreatorPassword,
+            "username": drinkCreatorUsername
       },
-      "id": 1,
-          "name": "water"
+      "id": drinkId,
+          "name": drinkName.name
     },
       "id": 0,
         "rate": data.rate

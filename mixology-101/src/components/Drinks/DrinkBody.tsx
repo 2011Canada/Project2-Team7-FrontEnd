@@ -35,6 +35,25 @@ export class DrinkBody extends React.Component<any,any> {
         this.setState({degree: res.degree})
         //this.setState({Ingredient})
         this.setState({creator: (res.drinkCreator.firstname +" "+ res.drinkCreator.lastname)})
+
+
+        // setting drink info in session
+        sessionStorage.setItem("drinkName",  JSON.stringify(name))
+        sessionStorage.setItem("drinkdegree",  JSON.stringify(res.degree))
+        sessionStorage.setItem("drinkCreatorFirstName",  JSON.stringify(res.drinkCreator.firstname))
+        sessionStorage.setItem("drinkCreatorLastName",  JSON.stringify(res.drinkCreator.lastname))
+        sessionStorage.setItem("drinkCreatorId", JSON.stringify(res.drinkCreator.id))
+        sessionStorage.setItem("drinkCreatorUsername", JSON.stringify(res.drinkCreator.username))
+        sessionStorage.setItem("drinkCreatorPassword", JSON.stringify(res.drinkCreator.password))
+        sessionStorage.setItem("drinkId", JSON.stringify(res.id))
+
+
+
+
+        console.log('degree is : ' + sessionStorage.getItem("drinkdegree"))
+
+        console.log('creator is : ' + sessionStorage.getItem("drinkcreator"))
+
         console.log(this.state.drinkName)
     }
   
