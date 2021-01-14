@@ -25,7 +25,7 @@ const DrinkCard:any = (props:any)=>{
             <div className="card-body">
                 <DrinkName key={props.id} id={props.id}  name={props.name} degree={props.degree} creator={props.username}/>
                 <small className="badge badge-pill bg-warning text-dark "> {props.degree}% {/*will be an object later */}</small> &nbsp;
-                <p className="text-right btn badge btn-secondary"><a href={reviewUrl}>Reviews</a> </p>
+                <p className="text-right btn badge btn-secondary"><a href={reviewUrl} style={{color:'white'}}>Reviews</a> </p>
                 <p className="card-text">Created by: {props.creator}</p>
                 
             </div>
