@@ -1,5 +1,11 @@
 
+<<<<<<< HEAD
 import React from 'react';
+=======
+//new reg implementation
+import RegisterComponent from './components/RegisterForms/Register2'
+import React, {useState}from 'react';
+>>>>>>> home-page-searches
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import LoginMain from './components/login/LoginMain';
 import { Logout } from './components/login/Logout';
@@ -13,7 +19,10 @@ import MainPage from './components/MainPageComponents/MainPage';
 export default function App() {
   return (
     <div className="App">
+<<<<<<< HEAD
 
+=======
+>>>>>>> home-page-searches
       <Router>
         <Switch>
           <Route path = "/login"> <LoginMain /> </Route>
@@ -26,6 +35,9 @@ export default function App() {
         </Switch>
       </Router>
     </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> home-page-searches
   );
 }
