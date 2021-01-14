@@ -1,7 +1,7 @@
 import React from 'react';
 import { drinkInfoByName } from '../../remote/mixRemote/mixRemoteFunc'
 import { drinkInfo } from '../../remote/mixRemote/mixRemoteFunc'
-
+import { Ingredients } from './Ingredients'
 import { Review } from '../review/Review'
 import { Button} from '@material-ui/core'
 
@@ -33,6 +33,7 @@ export class DrinkBody extends React.Component<any,any> {
             drinkId: 0,
             drinkName: "",
             degree: 0,
+            Ingredient: ["a","b"],
             creator: ""
         }
     }
@@ -43,11 +44,7 @@ export class DrinkBody extends React.Component<any,any> {
          let response = await drinkInfo(name)
          this.setState({drinkName: response.name})
          this.setState({degree: response.degree})
-         //this.setState({Ingredient})
          this.setState({creator: (response.drinkCreator.firstname +" "+ response.drinkCreator.lastname)})
-
-
-
 
 
         // setting drink info in session
@@ -99,6 +96,7 @@ export class DrinkBody extends React.Component<any,any> {
                 </h4>
                 </div>
                 <div className="row"  style={{ marginLeft:20}}>
+                    <Ingredients  key={this.state.drinkId} drinkId={this.state.drinkId} />
                 </div>
             </div>
             <div className="container-fluid">
