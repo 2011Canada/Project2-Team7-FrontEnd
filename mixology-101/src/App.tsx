@@ -1,5 +1,7 @@
 
-import React from 'react';
+//new reg implementation
+import RegisterComponent from './components/RegisterForms/Register2'
+import React, {useState}from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import LoginMain from './components/login/LoginMain';
 import { Logout } from './components/login/Logout';
