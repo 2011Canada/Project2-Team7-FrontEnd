@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import RangeSlider from 'react-bootstrap-range-slider';
 import SearchBar from './SearchBar'
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact"
+import axios from 'axios'
 
 
 const barStyle = {
@@ -37,7 +39,8 @@ const SearchButtonStyling = {
 
 const ProfileBar = (props:any) =>{
 
- const [ sliderValue, setValue ] = useState(50); 
+ const [ sliderValue, setSliderValue ] = useState(50); 
+ const [favorites, setFavorites] = useState([]);
 
 
 
@@ -52,9 +55,21 @@ var   isGuest = true;
   }
 
   
+  
 
 
+    const getFavorites = async (e:any)=>{
+        e.preventDefault()
+        console.log("getdrinksbyalcoholcontentSTART")
+        const response = await axios.get(`http://localhost:8080/user/favoriteDrinks/${userInfo.id}`).catch((err)=>{console.log(err)})
+        setFavorites([])
+        
 
+        if((response && response.data)){
+            // console.log(response.data)
+            setFavorites(response.data)
+        } 
+    }
 
 
 
@@ -85,8 +100,8 @@ var   isGuest = true;
 
                 {/* SEARCH FAVORITE DRINKS */}
                 <div style={{}} className="col-12 col-sm-2 ">
-                    <form style={{height:"100%"}}>
-                            <button style={SearchButtonStyling} type="button" className="btn btn-danger btn-circle btn-xl">
+                    <form onSubmit={getFavorites} style={{height:"100%"}}>
+                            <button style={SearchButtonStyling} type="submit" className="btn btn-danger btn-circle btn-xl">
                                 <i className="fa fa-heart"></i>
                             </button>
                             <p className="badge">Favorites</p>
@@ -95,7 +110,7 @@ var   isGuest = true;
                 
 
 
-{/* ================================UNDER CONSTRUCTION % ALCOHOL============================================================== */}
+
                 {/* SEARCH DRINKS BY ALCOHOL CONTENT */}
                 <div style={{}} className="col-12 col-sm-2 ">
 
@@ -104,13 +119,13 @@ var   isGuest = true;
                         <RangeSlider
                             value={sliderValue}
                             onChange={(changeEvent:any) => {
-                                    setValue(changeEvent.target.value)
+                                    setSliderValue(changeEvent.target.value)
                                     props.setValueSlider(sliderValue)
                                     
                                 }
                             }
                             onAfterChange = {(e:any)=>{
-                                setValue(e.target.value)
+                                setSliderValue(e.target.value)
                                 props.setValueSlider(sliderValue)
                                 props.getCall3()
                             }}
@@ -128,7 +143,7 @@ var   isGuest = true;
 
                 </div>
 
-{/* ================================UNDER CONSTRUCTION % ALCOHOL============================================================== */}
+
                 {/* SEARCH DRINKS BY INGREDIENT */}
                 <div style={{}} className="col-12 col-sm-2 ">
                     <form style={{height:"100%"}}>
@@ -140,6 +155,37 @@ var   isGuest = true;
                 </div>
 
             </div>
+
+
+{/* HIDDEN ROW FOR FAV DRINKS */}
+            <div className="row">
+                <div className="container">
+                    {/* <div className="row">
+                        <div className="col-md-12">
+                            <h3 >Favorites</h3>
+                        </div>
+                    </div> */}
+                    <div className="row">
+                        <div className="col-md-2">
+
+                            {favorites.map((element)=>{
+                                 return(
+                                    <div className="alert alert-success" role="alert">
+                                        <a className="text-dark" style={{textDecorationColor:"black"}} href="">{element.name} • {element.degree}%</a> 
+                                    </div>
+                                )
+                            })     
+                            }
+
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+
+
         </div>
     )
 
