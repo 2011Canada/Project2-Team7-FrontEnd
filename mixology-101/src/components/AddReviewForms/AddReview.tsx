@@ -41,20 +41,14 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
     var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
 
     await axios.post('http://localhost:8080/review',{
+
       "author": {
-          // "firstname": "string",
-          // "id": 7,
-          // "lastname": "string",
-          // "password": "string",
-          // "username": "string"
-
-
-         "firstname":userInfo.valueOf('firstname'),
-         "id": userInfo.valueOf('id'),
-         "lastname": userInfo.valueOf('lastname'),
-         "password": userInfo.valueOf('password'),
-         "username": userInfo.valueOf('username')
-    },
+        "firstname": userInfo.firstname,
+        "id": userInfo.id,
+        "lastname": userInfo.lastname,
+        "password": userInfo.password,
+        "username": userInfo.username,
+      },
       "description": data.description,
         "drink": {
       "degree": 10,
