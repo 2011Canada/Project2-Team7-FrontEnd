@@ -190,7 +190,7 @@ var   isGuest = true;
                                  return(
                                     <div className="col-md-2">
                                         <div className="alert alert-success badge" role="alert">
-                                            <a className="text-dark" style={{textDecorationColor:"black"}} href="#">{element.name} • {element.degree}%</a> 
+                                            <a className="text-dark" style={{textDecorationColor:"black"}} href={`../drinks/${element.name}`}>{element.name} • {element.degree}%</a> 
                                         </div>
                                     </div>
                                 )
