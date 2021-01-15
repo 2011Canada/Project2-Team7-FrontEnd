@@ -2,7 +2,6 @@ import React, {  } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -53,11 +52,12 @@ const useStyles = makeStyles((theme) => ({
 
 export const RegisterForm: React.FunctionComponent<any> = () =>{
   const classes = useStyles();
-
+  const setDrink = '';
  const {register, handleSubmit} = useForm();
 
 
  const submitRegister = async (data:any)=>{
+ 
      console.log(data)
       await axios.post('http://localhost:8080/user',{
          "firstname": data.firstname,
@@ -77,7 +77,7 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
   return (
   
   <>
-    <MainHeader/>
+    <MainHeader setDrink={setDrink}/>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>

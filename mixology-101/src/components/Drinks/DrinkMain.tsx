@@ -8,7 +8,7 @@ const DrinkMain = ()=>{
 
     return(
         <div>
-            <MainHeader />
+            <MainHeader setDrink={''}/>
             <DrinkBody />
             <MainFooter />
         </div>

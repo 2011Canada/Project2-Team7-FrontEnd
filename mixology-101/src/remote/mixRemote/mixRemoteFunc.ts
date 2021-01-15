@@ -98,3 +98,21 @@ export const ingredientsList = async (drinkId:any) => {
     }
 
 }
+
+
+export const getIngredients = async () => {
+
+    try{
+        let res = await mixologyClient.get('/ingredients') 
+        return res.data
+    }catch(e){
+        console.log(e)
+        if(e.response){
+            throw new Error(e.response.data)
+        } else {
+            throw new Error("CANNOT FIND INGREDIENTS LIST")
+        }
+        
+    }
+
+}

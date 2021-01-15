@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 
 const DrinkName:any = (props:any)=>{
 
@@ -10,6 +10,5 @@ const DrinkName:any = (props:any)=>{
 }
 var aStyle = {
     color: 'black',
-    
 };
 export default DrinkName

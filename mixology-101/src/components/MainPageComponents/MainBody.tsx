@@ -1,4 +1,4 @@
-import React, { Component , useState, useEffect} from 'react';
+import React, {useState} from 'react';
 // import getAllDrinks from '../../utils/asyncCalls';
 import DrinkCard from './DrinksCard/DrinkCard'
 import ProfileBar from './ProfileBar/ProfileBar'
@@ -16,20 +16,51 @@ const bodyStyle = {
   overflow: "auto"
 }
 
-const styleHead = {
-    height: '200vh'
-}
-
-
-
-const MainBody = ()=>{
-
+const MainBody = (props)=>{
+    
+    
+   // console.log("MainBody Start")
     const [drinks, setDrinks] = useState([])
     let [call, setCall] = useState(null)
+    let [cnt, setCnt] = useState(1)
+    let [drinkName, setName] = useState(props.myDrink)
     const [ valueSlider, setValueSlider ] = useState(50); //Tracks the slider
+    
+    
+    const setTheDrink = async (dName:any)=>{
+       // console.log("setTheDrink Start")
+        setName(dName)
+        setCnt(1)
+        setDrinks([])
+        const response =  await axios.get(`http://localhost:8080/drinks/drinkName/${dName}`).catch((err)=>{
+            console.log(err)
+        })
+        if(response && response.data){
+            //console.log("response.data: "+ response.data)
+            setDrinks([response.data])
+        }
+        
+        // else{
+        //     alert(`${dName} DOES NOT EXIST`)
+        // }
 
+    }
 
+    if(cnt === 1){
+       // console.log("Here because of cnt == 1")
+        if( props.myDrink !== null && props.myDrink !== '' && props.myDrink !== undefined){
+            setTheDrink(props.myDrink);
+            setCnt(cnt+1)
+        }
+    }
 
+    if(drinkName !== props.myDrink){
+        //console.log("drinkName !== props.myDrink")
+        
+        setTheDrink(props.myDrink);
+    }
+    
+  
 
     const getCall1 = (e:Event)=>{ //DONE
         e.preventDefault();
@@ -53,23 +84,24 @@ const MainBody = ()=>{
         setCall(4)
     }
 
-
-
-
 // useEffect(() => {}, [valueSlider])
-
-
-
 
     const getAllDrinks = async ()=>{
         const response = await axios.get('http://localhost:8080/drinks').catch((err)=>{console.log(err)})
 
-            if((response && response.data)){
-            setDrinks(response.data)
+        if((response && response.data)){
             
+            setDrinks([])
+            response.data.forEach((element:any) => {
+                if(parseInt(element.degree) <= valueSlider){
+                    setDrinks(oldArray=>[...oldArray, element]);
+                }
+                
+            })
         } 
         
     }
+
 
     const getDrinkByAlcoholContent = async ()=>{
         console.log("getdrinksbyalcoholcontentSTART")
@@ -77,7 +109,7 @@ const MainBody = ()=>{
         setDrinks([])
         
 
-            if((response && response.data)){
+        if((response && response.data)){
             // console.log(response.data)
             response.data.forEach((element:any) => {
                 if(parseInt(element.degree) <= valueSlider){
@@ -120,14 +152,10 @@ const MainBody = ()=>{
 
             <div className="row">
 
-
-
                 {
                 drinks.map((element)=>{
                     return(<DrinkCard key={element.id} id={element.id}  name={element.name} degree={element.degree} creator={element.drinkCreator.username}/>)  
                 })}
-
-                
 
             </div>
         </div>

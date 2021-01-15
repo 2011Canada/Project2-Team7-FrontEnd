@@ -1,10 +1,7 @@
-import { BorderAllOutlined, Translate } from '@material-ui/icons'
-import { profile } from 'console'
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import RangeSlider from 'react-bootstrap-range-slider';
-import SearchBar from './SearchBar'
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact"
 import axios from 'axios'
 
 

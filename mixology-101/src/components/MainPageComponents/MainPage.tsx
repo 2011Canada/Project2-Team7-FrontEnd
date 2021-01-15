@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MainBody from './MainBody'
 import MainHeader from './MainHeader'
 import MainFooter from './MainFooter'
@@ -6,10 +6,11 @@ import MainFooter from './MainFooter'
 
 const MainPage = ()=>{
 
+    const[myDrink, setDrink] = useState('')
     return(
         <div>
-            <MainHeader />
-            <MainBody />
+            <MainHeader setDrink={setDrink}/>
+            <MainBody myDrink={myDrink}/>
             <MainFooter />
         </div>
         

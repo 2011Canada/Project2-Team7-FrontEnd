@@ -39,10 +39,10 @@ export class DrinkBody extends React.Component<any,any> {
 
      componentWillMount() {
         let name = window.location.href.substring(29,)
-        console.log("drinkName: " + name)
+       // console.log("drinkName: " + name)
         let res = drinkInfoByName(name)
         res.then((data) =>{
-            console.log("in DrinkBody, res.id: " + data.id)
+            //console.log("in DrinkBody, res.id: " + data.id)
             this.setState({drinkId: data.id})
             this.setState({drinkName: data.name})
             this.setState({degree: data.degree})
