@@ -11,19 +11,27 @@ import  DrinkMain  from './components/Drinks/DrinkMain';
 import { AddReviewForm} from './components/AddReviewForms/AddReview';
 import './App.css';
 import MainPage from './components/MainPageComponents/MainPage';
+import {Spring} from 'react-spring/renderprops'
+import Container from './components/Spring/Spring'
+import Index from './components/Index'
+
+
 
 export default function App() {
   return (
-    <div className="App" style={{height:"100vh",backgroundImage:"url('./creators.png')", backgroundSize:"cover"}}>
+    <div className="App" >
+      
+
       <Router>
         <Switch>
-          <Route path = "/login"> <LoginMain /> </Route>
-          <Route path = "/logout"> <Logout /> </Route>
-          <Route path = "/review"> <ReviewMain /> </Route>
-          <Route path = "/register" component = {RegisterForm}/>
-          <Route path = "/home" component = {MainPage} />
-          <Route path = "/drinks" component = {DrinkMain} />
-          <Route path = "/addReview" component  = {AddReviewForm}/>
+          <Route exact path = "/"> <Index /> </Route>
+          <Route exact path = "/login"> <LoginMain /> </Route>
+          <Route exact path = "/logout"> <Logout /> </Route>
+          <Route  path = "/review"> <ReviewMain /> </Route>
+          <Route exact path = "/register" component = {RegisterForm}/>
+          <Route  path = "/home" component = {MainPage} />
+          <Route  path = "/drinks" component = {DrinkMain} />
+          <Route  path = "/addReview" component  = {AddReviewForm}/>
         </Switch>
       </Router>
     </div>
