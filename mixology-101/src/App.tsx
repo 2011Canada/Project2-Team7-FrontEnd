@@ -14,23 +14,30 @@ import { User } from './models/User';
 import MainPage from './components/MainPageComponents/MainPage';
 import {SelectIngredient} from './components/Drinks/AddDrinks/SelectIngredient';
 import {FavouriteForm} from "./components/Favourite/Favourite";
+import {Spring} from 'react-spring/renderprops'
+import Container from './components/Spring/Spring'
+import Index from './components/Index'
+
+
 
 export default function App() {
   return (
-    <div className="App" style={{height:"100vh",backgroundImage:"url('./creators.png')", backgroundSize:"cover"}}>
+    <div className="App" >
+      
+
       <Router>
         <Switch>
-          <Route path = "/login"> <LoginMain /> </Route>
-          <Route path = "/logout"> <Logout /> </Route>
+          <Route exact path = "/"> <Index /> </Route>
+          <Route exact path = "/login"> <LoginMain /> </Route>
+          <Route exact path = "/logout"> <Logout /> </Route>
           <Route path = "/review"> <ReviewMain /> </Route>
-          <Route path = "/register" component = {RegisterForm}/>
+          <Route exact path = "/register" component = {RegisterForm}/>
           <Route path = "/home" component = {MainPage} />
           <Route path = "/drinks" component = {DrinkMain} />
           <Route path = "/addReview" component  = {AddReviewForm}/>
           <Route path="/add-review" component  = {AddReviewForm}/>
           <Route path="/add-drink" component  = {CreateDrink}/>
           <Route path="/select-ingredient" component  = {SelectIngredient}/>
-          
           <Route path = "/favourite" component  = {FavouriteForm}/>
         </Switch>
       </Router>

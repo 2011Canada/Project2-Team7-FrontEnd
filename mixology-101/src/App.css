@@ -1,3 +1,14 @@
+* {
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: "Yusei Magic", sans-serif, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .App {
   text-align: center;
   height: 100%;
@@ -41,3 +52,5 @@ bottom: 0;
   height: 200px;
   width: 200px;
 }
+
+
