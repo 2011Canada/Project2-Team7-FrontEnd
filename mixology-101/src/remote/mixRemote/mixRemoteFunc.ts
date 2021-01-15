@@ -1,4 +1,4 @@
-import { mixologyClient } from "."
+import { mixologyClient } from ".."
 
 
 export const login = async (username:string, password:string) => {
@@ -60,4 +60,48 @@ export const drinkInfo = async (drinkName:any) => {
         
     }
 
+}
+
+
+
+export const mixologyAddReview = async ( description:string, rate:number , userid:number, drinkid:number) =>{
+    let credentials ={
+        "id"  : 0 ,
+        "userid": `${userid}`,
+        "description" : `${description}`,
+        "rate" : `${rate}`,
+        "drinkid" : `${drinkid}`
+    }
+    try{
+        let res = await mixologyClient.post('/review', credentials)//.then((response)=> console.log(response.data))
+        console.log(res.data)
+        console.log(res)
+
+        return res.data
+    }catch(e){
+        console.log(e);
+        if(e.response){
+            throw new Error(e.resonse.data)
+        }else{
+            throw new Error("OOPs something else went wrong ")
+        }
+    }
+}
+
+ 
+export const addRecipe = async (ingredientId: any , drinkId: any) => {
+
+    try{
+
+        let res = await mixologyClient.post('ingredients/recipe')
+        return res.data
+    }catch(e){
+        console.log(e);
+        if(e.response){
+            throw new Error(e.response.data)
+        } else {
+            throw new Error("CANNOT SEND RECIPE INFO")
+        }
+
+    }
 }
