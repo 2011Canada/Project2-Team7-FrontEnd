@@ -1,10 +1,13 @@
-import { BorderAllOutlined, Translate } from '@material-ui/icons'
-import { profile } from 'console'
-import React from 'react'
-import SearchBar from './SearchBar'
+
+import React, { useState } from 'react';
+import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
+import RangeSlider from 'react-bootstrap-range-slider';
+import axios from 'axios'
+
 
 const barStyle = {
-    backgroundColor: "salmon"
+    backgroundColor: "salmon",
+    minHeight: "15vh"
 
 }
 
@@ -33,6 +36,10 @@ const SearchButtonStyling = {
 
 const ProfileBar = (props:any) =>{
 
+ const [ sliderValue, setSliderValue ] = useState(50); 
+ const [favorites, setFavorites] = useState([]);
+
+
 
   
 var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
@@ -43,6 +50,23 @@ var   isGuest = true;
   } else{
       isGuest = true;
   }
+
+  
+  
+
+
+    const getFavorites = async (e:any)=>{
+        e.preventDefault()
+        console.log("getdrinksbyalcoholcontentSTART")
+        const response = await axios.get(`http://localhost:8080/user/favoriteDrinks/${userInfo.id}`).catch((err)=>{console.log(err)})
+        setFavorites([])
+        
+
+        if((response && response.data)){
+            // console.log(response.data)
+            setFavorites(response.data)
+        } 
+    }
 
 
 
@@ -56,9 +80,11 @@ var   isGuest = true;
                     <p>{!isGuest? ("username : " +userInfo.username +" | id: " + userInfo.id) : ""}</p>
                 </div>
 
-                {/* SEARCH PARAMS */}
+
+
+                {/* SEARCH ALL DRINKS */}
                 <div style={{}} className="col-12 col-sm-2 ">
-                    <form onSubmit={props.call} style={{height:"100%"}}>
+                    <form onSubmit={props.getCall1} style={{height:"100%"}}>
                             <button  style={SearchButtonStyling} type="submit" className="btn btn-success btn-circle btn-xl">
                                 <i className="fa fa-cocktail"></i>
                             </button>
@@ -66,23 +92,56 @@ var   isGuest = true;
                             
                     </form>
                 </div>
+
+
+
+                {/* SEARCH FAVORITE DRINKS */}
                 <div style={{}} className="col-12 col-sm-2 ">
-                    <form style={{height:"100%"}}>
-                            <button style={SearchButtonStyling} type="button" className="btn btn-danger btn-circle btn-xl">
+                    <form onSubmit={getFavorites} style={{height:"100%"}}>
+                            <button style={SearchButtonStyling} type="submit" className="btn btn-danger btn-circle btn-xl">
                                 <i className="fa fa-heart"></i>
                             </button>
                             <p className="badge">Favorites</p>
                     </form>
                 </div>
+                
+
+
+
+                {/* SEARCH DRINKS BY ALCOHOL CONTENT */}
                 <div style={{}} className="col-12 col-sm-2 ">
-                    <form style={{height:"100%"}}>
-                            <button style={SearchButtonStyling} type="button" className="btn btn-warning btn-circle btn-xl">
-                                <i className="fas fa-percentage"></i>
-                            </button>
-                            <p className="badge">Percentage</p>
+
+                    <p>Alcohol Content</p>  
+                    <form onSubmit={props.getCall3} style={{height:"100%"}}>
+                        <RangeSlider
+                            value={sliderValue}
+                            onChange={(changeEvent:any) => {
+                                    setSliderValue(changeEvent.target.value)
+                                    props.setValueSlider(sliderValue)
+                                    
+                                }
+                            }
+                            onAfterChange = {(e:any)=>{
+                                setSliderValue(e.target.value)
+                                props.setValueSlider(sliderValue)
+                                props.getCall3()
+                            }}
+                            // max = true
+                            variant='info'
+                            tooltip="auto"
+                            tooltipLabel={(e:any) =>{
+                                return (`UP TO : ${props.getValueSlider()}% Alcohol`)
+                                // return props.valueSlider
+                            }}
+                        />
                     </form>
+
+                    
+
                 </div>
 
+
+                {/* SEARCH DRINKS BY INGREDIENT */}
                 <div style={{}} className="col-12 col-sm-2 ">
                     <form style={{height:"100%"}}>
                             <button style={SearchButtonStyling} type="button" className="btn btn-info btn-circle btn-xl">
@@ -93,8 +152,40 @@ var   isGuest = true;
                 </div>
 
             </div>
+
+
+{/* HIDDEN ROW FOR FAV DRINKS */}
+            <div className="row">
+                <div className="container">
+                    {/* <div className="row">
+                        <div className="col-md-12">
+                            <h3 >Favorites</h3>
+                        </div>
+                    </div> */}
+                    <div className="row">
+                        <div className="col-md-2">
+
+                            {favorites.map((element)=>{
+                                 return(
+                                    <div className="alert alert-success" role="alert">
+                                        <a className="text-dark" style={{textDecorationColor:"black"}} href="">{element.name} • {element.degree}%</a> 
+                                    </div>
+                                )
+                            })     
+                            }
+
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+
+
         </div>
     )
 
 }
 export default ProfileBar
+

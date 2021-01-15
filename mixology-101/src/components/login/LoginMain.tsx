@@ -6,9 +6,10 @@ import { User } from '../../models/User';
 
 const LoginMain = ()=>{
     const [user, changeUser] = useState<User>()
+
     return(
         <div>
-            <MainHeader />
+            <MainHeader setDrink={''}/>
             <LoginForm currentUser={user} updateCurrentUser={changeUser} />
             <MainFooter />
         </div>

@@ -35,7 +35,7 @@ export class Ingredients extends React.Component<any, any> {
         let returnList = []
 
         for(const [index, value] of this.state.ingredientsList.entries()){
-            returnList.push(value.name)
+            returnList.push(value.name + ", ")
         }
        
         return (

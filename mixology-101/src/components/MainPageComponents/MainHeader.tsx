@@ -1,4 +1,8 @@
 import React, {useState} from 'react';
+import { useForm } from "react-hook-form";
+import axios from 'axios'
+import MainFooter from './MainFooter'
+import MainBody from './MainBody'
 
 const logoStyle = {
   width: '4.5rem',
@@ -16,8 +20,15 @@ var   isGuest = true;
   }
 
 
+  const MainHeader = ({setDrink})=>{
 
-const MainHeader = ()=>{
+  const [drinkName, setDrinkName] = useState('')
+  
+  const searchDrink = async (event:any)=>{
+    event.preventDefault()
+    console.log("event.drinkname: " + drinkName)
+    setDrink(drinkName)
+  }
 
   let $loginBtn = null;
   let $registBtn = null;
@@ -60,8 +71,8 @@ const MainHeader = ()=>{
           {$registBtn}
         </ul>
         
-        <form className="form-inline my-2 my-lg-0">
-            <input className="form-control mr-sm-2" type="search" placeholder="Find a drink" aria-label="Search" />
+        <form onSubmit={searchDrink} className="form-inline my-2 my-lg-0">
+            <input id="drinkname" className="form-control mr-sm-2" type="search" placeholder="Find a drink" aria-label="Search" onChange={event => setDrinkName(event.target.value)} />
             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 
@@ -72,5 +83,4 @@ const MainHeader = ()=>{
     )
 
 }
-
 export default MainHeader

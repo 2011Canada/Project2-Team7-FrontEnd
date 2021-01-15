@@ -5,7 +5,7 @@ export class Review extends React.Component<any, any> {
     
     constructor(props:any){
         super(props);
-        console.log("Review_constructor_props_drinkId: " + props.drinkId)
+       //console.log("Review_constructor_props_drinkId: " + props.drinkId)
         this.state = {
             key: 0,
             drinkId: props.drinkId,

@@ -7,7 +7,7 @@ const LoginMain = ()=>{
 
     return(
         <div>
-            <MainHeader />
+            <MainHeader setDrink={''}/>
             <ViewReview />
             <MainFooter />
         </div>
