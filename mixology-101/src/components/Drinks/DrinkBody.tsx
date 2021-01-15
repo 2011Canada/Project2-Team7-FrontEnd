@@ -1,7 +1,8 @@
 import React from 'react';
 import { drinkInfoByName } from '../../remote/mixRemote/mixRemoteFunc'
-import { Review } from '../review/Review'
+import { drinkInfo } from '../../remote/mixRemote/mixRemoteFunc'
 import { Ingredients } from './Ingredients'
+import { Review } from '../review/Review'
 import { Button} from '@material-ui/core'
 
 const imageStyle = {
@@ -37,12 +38,12 @@ export class DrinkBody extends React.Component<any,any> {
         }
     }
 
-     componentWillMount() {
+    async componentWillMount() {
         let name = window.location.href.substring(29,)
-       // console.log("drinkName: " + name)
+
         let res = drinkInfoByName(name)
         res.then((data) =>{
-            //console.log("in DrinkBody, res.id: " + data.id)
+            console.log("in DrinkBody, res.id: " + data.id)
             this.setState({drinkId: data.id})
             this.setState({drinkName: data.name})
             this.setState({degree: data.degree})
@@ -50,7 +51,23 @@ export class DrinkBody extends React.Component<any,any> {
             this.setState({creator: (data.drinkCreator.firstname +" "+ data.drinkCreator.lastname)})
             console.log(this.state.drinkName)
         })
-        
+
+        let response = await drinkInfo(name)
+        this.setState({drinkName: response.name})
+        this.setState({degree: response.degree})
+        this.setState({creator: (response.drinkCreator.firstname +" "+ response.drinkCreator.lastname)})
+
+
+        // setting drink info in session
+        sessionStorage.setItem("drinkName",  JSON.stringify(name))
+        sessionStorage.setItem("drinkdegree",  JSON.stringify(response.degree))
+        sessionStorage.setItem("drinkCreatorFirstName",  JSON.stringify(response.drinkCreator.firstname))
+        sessionStorage.setItem("drinkCreatorLastName",  JSON.stringify(response.drinkCreator.lastname))
+        sessionStorage.setItem("drinkCreatorId", JSON.stringify(response.drinkCreator.id))
+        sessionStorage.setItem("drinkCreatorUsername", JSON.stringify(response.drinkCreator.username))
+        sessionStorage.setItem("drinkCreatorPassword", JSON.stringify(response.drinkCreator.password))
+        sessionStorage.setItem("drinkId", JSON.stringify(response.id))
+
     }
   
    render(){
@@ -76,7 +93,7 @@ export class DrinkBody extends React.Component<any,any> {
                 </h4>
                 </div>
                 <div className="row"  style={{ marginLeft:20}}>
-                <Ingredients  key={this.state.drinkId} drinkId={this.state.drinkId} />
+                    <Ingredients  key={this.state.drinkId} drinkId={this.state.drinkId} />
                 </div>
             </div>
             <div className="container-fluid">

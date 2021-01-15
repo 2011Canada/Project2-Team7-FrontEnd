@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d2173ec-c132-421a-96ed-4b1c82e57f31" name="Default Changelist" comment="" />
+    <list default="true" id="4d2173ec-c132-421a-96ed-4b1c82e57f31" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mixology-101/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/mixology-101/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mixology-101/src/components/AddReviewForms/AddReview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/mixology-101/src/components/AddReviewForms/AddReview.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,20 +51,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Project2-Team7-BackEnd" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Users\syeda\Project2-Team7-FrontEnd\mixology-101\node_modules\typescript\lib" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -83,7 +85,8 @@
       <workItem from="1610211512925" duration="8000" />
       <workItem from="1610213894600" duration="9000" />
       <workItem from="1610384382423" duration="8334000" />
-      <workItem from="1610397372766" duration="5126000" />
+      <workItem from="1610397372766" duration="6723000" />
+      <workItem from="1610482402393" duration="920000" />
     </task>
     <servers />
   </component>
