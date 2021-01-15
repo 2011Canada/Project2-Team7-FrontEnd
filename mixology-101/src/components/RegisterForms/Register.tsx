@@ -70,7 +70,9 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
          console.log("succefully registered!", response.data)
          
       })
-      .catch((err)=>{console.log(err)})
+      .catch((e)=>{
+        console.log(e)
+      })
  }
 
  
