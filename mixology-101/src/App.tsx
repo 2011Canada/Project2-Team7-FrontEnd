@@ -11,6 +11,7 @@ import  DrinkMain  from './components/Drinks/DrinkMain';
 import { AddReviewForm} from './components/AddReviewForms/AddReview';
 import './App.css';
 import MainPage from './components/MainPageComponents/MainPage';
+import {FavouriteForm} from "./components/Favourite/Favourite";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
           <Route path = "/home" component = {MainPage} />
           <Route path = "/drinks" component = {DrinkMain} />
           <Route path = "/addReview" component  = {AddReviewForm}/>
+          <Route path = "/favourite" component  = {FavouriteForm}/>
         </Switch>
       </Router>
     </div>
