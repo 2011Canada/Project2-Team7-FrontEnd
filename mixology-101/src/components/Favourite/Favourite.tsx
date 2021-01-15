@@ -7,6 +7,7 @@ import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import {Icon} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -34,7 +35,7 @@ export const FavouriteForm: React.FunctionComponent<any> = () =>{
 
     const {handleSubmit} = useForm();
 
-    const submitAddReview = async (data:any) => {
+    const submitFavourite = async (data:any) => {
         console.log(data)
         var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
         var drinkName = JSON.parse(sessionStorage.getItem("drinkName"));
@@ -71,26 +72,20 @@ export const FavouriteForm: React.FunctionComponent<any> = () =>{
 
         })
             .then((response)=>{
-                console.log("succefully submitted your review!", response.data)
+                console.log("succefully submitted your favorite drink!", response.data)
             })
             .catch((err)=>{console.log(err)})
+
     }
 
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline/>
             <div className={classes.paper}>
-                <form className={classes.form} noValidate onSubmit={ handleSubmit(submitAddReview)}>
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.submit}
-                    >
-                        Submit
+                <form className={classes.form} noValidate onSubmit={ handleSubmit(submitFavourite)}>
+                    <Button type="submit">
+                        <i className="fa fa-heart fa-lg"></i>
                     </Button>
-
                 </form>
             </div>
         </Container>
