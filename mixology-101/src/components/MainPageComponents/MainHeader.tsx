@@ -55,7 +55,7 @@ var   isGuest = true;
 
     return(
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-logo"  href="#"><img style={logoStyle} src="logo2.png" alt="Image showing logo"/></a>
+      <a className="navbar-logo"  href="#"><img style={logoStyle} src="/img/logo2.png" alt="Image showing logo"/></a>
       <a className="navbar-brand" href="/home">Mixology<sup>101</sup></a>
 
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
