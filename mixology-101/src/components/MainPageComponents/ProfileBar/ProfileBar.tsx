@@ -6,6 +6,9 @@ import RangeSlider from 'react-bootstrap-range-slider';
 import SearchBar from './SearchBar'
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact"
 import axios from 'axios'
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
 
 
 const barStyle = {
@@ -41,6 +44,7 @@ const ProfileBar = (props:any) =>{
 
  const [ sliderValue, setSliderValue ] = useState(50); 
  const [favorites, setFavorites] = useState([]);
+ const [isHidden, setIsHidden] = useState(false)
 
 
 
@@ -68,10 +72,19 @@ var   isGuest = true;
         if((response && response.data)){
             // console.log(response.data)
             setFavorites(response.data)
+            console.log(response.data)
         } 
+
+        getHidden();
+    }
+
+    const getHidden = ()=>{
+        isHidden ? setIsHidden(false) :  setIsHidden(true)
     }
 
 
+    useEffect(() => {
+    }, [isHidden])
 
 
     return(
@@ -109,10 +122,23 @@ var   isGuest = true;
                 </div>
                 
 
+                 {/* SEARCH DRINKS BY INGREDIENT */}
+                {/* <div style={{}} className="col-12 col-sm-2 ">
+                    <form className="form-inline">
+
+                        <div className="form-group mx-sm-3 mb-2">
+                            <input type="text" className="form-control" id="ingredient" placeholder="Search by Ingredient" />
+                            <button type="submit" className="btn btn-primary mb-2">Search</button>
+                        </div>
+
+                        
+                    </form>
+                </div> */}
+
 
 
                 {/* SEARCH DRINKS BY ALCOHOL CONTENT */}
-                <div style={{}} className="col-12 col-sm-2 ">
+                <div style={{}} className="col-12 col-sm-4 ">
 
                     <p>Alcohol Content</p>  
                     <form onSubmit={props.getCall3} style={{height:"100%"}}>
@@ -144,45 +170,39 @@ var   isGuest = true;
                 </div>
 
 
-                {/* SEARCH DRINKS BY INGREDIENT */}
-                <div style={{}} className="col-12 col-sm-2 ">
-                    <form style={{height:"100%"}}>
-                            <button style={SearchButtonStyling} type="button" className="btn btn-info btn-circle btn-xl">
-                                <i className="fas fa-mortar-pestle"></i>
-                            </button>
-                            <p className="badge">Search By Ingridient</p>
-                    </form>
-                </div>
+               
 
             </div>
 
 
 {/* HIDDEN ROW FOR FAV DRINKS */}
-            <div className="row">
+{isHidden &&  <div className="row">
                 <div className="container">
-                    {/* <div className="row">
+                    <div className="row">
                         <div className="col-md-12">
                             <h3 >Favorites</h3>
                         </div>
-                    </div> */}
+                    </div>
                     <div className="row">
-                        <div className="col-md-2">
+                        
 
                             {favorites.map((element)=>{
                                  return(
-                                    <div className="alert alert-success" role="alert">
-                                        <a className="text-dark" style={{textDecorationColor:"black"}} href="">{element.name} • {element.degree}%</a> 
+                                    <div className="col-md-2">
+                                        <div className="alert alert-success badge" role="alert">
+                                            <a className="text-dark" style={{textDecorationColor:"black"}} href="#">{element.name} • {element.degree}%</a> 
+                                        </div>
                                     </div>
                                 )
                             })     
                             }
 
                             
-                        </div>
+                        
                     </div>
                 </div>
                 
-            </div>
+            </div>}
 
 
 

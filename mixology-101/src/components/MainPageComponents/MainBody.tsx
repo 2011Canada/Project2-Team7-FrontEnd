@@ -2,6 +2,7 @@ import React, { Component , useState, useEffect} from 'react';
 // import getAllDrinks from '../../utils/asyncCalls';
 import DrinkCard from './DrinksCard/DrinkCard'
 import ProfileBar from './ProfileBar/ProfileBar'
+import {useForm} from 'react-hook-form'
 import axios from 'axios'
 
 
@@ -27,6 +28,8 @@ const MainBody = ()=>{
     const [drinks, setDrinks] = useState([])
     let [call, setCall] = useState(null)
     const [ valueSlider, setValueSlider ] = useState(50); //Tracks the slider
+    const [ingredient, setIngredient] = useState("")
+    const {register, handleSubmit} = useForm()
 
 
 
@@ -37,9 +40,10 @@ const MainBody = ()=>{
         setCall(1)
     }
 
-    const getCall2 = (e:Event)=>{
-        e.preventDefault();
+    const getCall2 = (data:any)=>{
         setCall(2)
+        setIngredient(data.ingredient)
+        getDrinksByIngredientName();
     }
 
     const getCall3 = ()=>{ //WORKING
@@ -56,7 +60,7 @@ const MainBody = ()=>{
 
 
 
-// useEffect(() => {}, [valueSlider])
+ useEffect(() => {document.title = "Home"}, [])
 
 
 
@@ -66,6 +70,7 @@ const MainBody = ()=>{
 
             if((response && response.data)){
             setDrinks(response.data)
+            
             
         } 
         
@@ -92,22 +97,28 @@ const MainBody = ()=>{
     }
 
     const getValueSlider = (()=>{
-        console.log("valueSlider has been set to ", valueSlider)
+        // console.log("valueSlider has been set to ", valueSlider)
         return valueSlider
     })
 
-  
-    
-    
-    
-    // call === 1 ? getAllDrinks() : console.log()
-    // call === 3 ? getDrinkByAlcoholContent() : console.log()
+    const getDrinksByIngredientName = async ()=>{
+        console.log("START OF  GET DRINK BY ING NAME SEARCH")
+        const response = await axios.get(`http://localhost:8080/drinks/ingredientName/${ingredient}`).catch((err)=>{console.log(err)})
+        setDrinks([])
+
+            if((response && response.data)){
+
+            setDrinks(response.data)
+            
+        } 
 
 
-//  useEffect(() => {}, []);
-//  useEffect(() => {}, [])
+    }
+
+    
 
     return(
+        
         
 
         <div className="container-fluid" style={bodyStyle}>
@@ -119,12 +130,36 @@ const MainBody = ()=>{
             </div>
 
             <div className="row">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            {(drinks.length > 0)  && 
+                                <div style={{}} className="col-12 col-sm-2 ">
+                                    <form className="form-inline" onSubmit={handleSubmit(getCall2)}>
+                                        <div className="form-group mx-sm-3 mb-2">
+                                            <input type="text" 
+                                            className="form-control" 
+                                            name="ingredient" 
+                                            placeholder="Search by Ingredient" 
+                                            ref={register()}
+                                            />
+                                            <button type="submit" className="btn btn-primary mb-2">Search</button>
+                                        </div> 
+                                    </form>
+                                </div> 
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-
-
+            <div className="row">
                 {
                 drinks.map((element)=>{
-                    return(<DrinkCard key={element.id} id={element.id}  name={element.name} degree={element.degree} creator={element.drinkCreator.username}/>)  
+                    return(
+                    
+                    <DrinkCard key={element.id} id={element.id}  name={element.name} degree={element.degree} creator={element.drinkCreator.username}/>
+                    )  
                 })}
 
                 

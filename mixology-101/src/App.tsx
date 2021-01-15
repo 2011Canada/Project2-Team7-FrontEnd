@@ -17,7 +17,7 @@ import MainPage from './components/MainPageComponents/MainPage';
 export default function App() {
   const [user, changeUser] = useState<User>()
   return (
-    <div className="App">
+    <div className="App" style={{height:"100vh",backgroundImage:"url('./creators.png')", backgroundSize:"cover"}}>
       <Router>
         <Switch>
           <Route path="/login"> <LoginForm currentUser={user} updateCurrentUser={changeUser} /> </Route>
