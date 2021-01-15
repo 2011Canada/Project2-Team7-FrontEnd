@@ -10,10 +10,6 @@ import axios from 'axios'
 const bodyStyle = {
   minHeight: '87vh',
   backgroundColor: "whitesmoke",
-//   background: "url('./avatarbg.png')",
-//   backgroundSize:"contain",
-//   backgroundRepeat: "no-repeat",
-//   backgroundPosition: "center",
   overflow: "auto"
 }
 
@@ -31,6 +27,9 @@ const MainBody = ()=>{
     const [ingredient, setIngredient] = useState("")
     const {register, handleSubmit} = useForm()
 
+    useEffect(() => {
+        console.log("USEEFFECT INGRIDIENT SET", ingredient)
+    }, [ingredient])
 
 
 
@@ -40,10 +39,11 @@ const MainBody = ()=>{
         setCall(1)
     }
 
-    const getCall2 = (data:any)=>{
+    let getCall2 = (data:any)=>{
+        console.log(data, "DATA INGRIDIENT INSIDE CALL 2")
         setCall(2)
         setIngredient(data.ingredient)
-        getDrinksByIngredientName();
+        getDrinksByIngredientName(data.ingredient);
     }
 
     const getCall3 = ()=>{ //WORKING
@@ -101,9 +101,10 @@ const MainBody = ()=>{
         return valueSlider
     })
 
-    const getDrinksByIngredientName = async ()=>{
+    const getDrinksByIngredientName = async (ing)=>{
+        console.log(ingredient, "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
         console.log("START OF  GET DRINK BY ING NAME SEARCH")
-        const response = await axios.get(`http://localhost:8080/drinks/ingredientName/${ingredient}`).catch((err)=>{console.log(err)})
+        const response = await axios.get(`http://localhost:8080/drinks/ingredientName/${ing}`).catch((err)=>{console.log(err)})
         setDrinks([])
 
             if((response && response.data)){
