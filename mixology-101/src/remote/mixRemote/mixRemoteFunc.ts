@@ -114,5 +114,22 @@ export const getIngredients = async () => {
         }
         
     }
+}
 
+
+export const drinkInfo = async (drinkName:any) => {
+
+    try {
+        let res = await mixologyClient.get('/drinks/drinkName/' + drinkName)
+        console.log(res.data)
+        return res.data
+    } catch (e) {
+        console.log(e)
+        if (e.response) {
+            throw new Error(e.response.data)
+        } else {
+            throw new Error("CANNOT LOGIN")
+        }
+
+    }
 }
