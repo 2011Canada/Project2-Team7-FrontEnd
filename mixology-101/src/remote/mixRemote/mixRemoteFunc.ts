@@ -48,7 +48,7 @@ export const drinkInfoByName = async (drinkName:any) => {
 
     try{
         let res = await mixologyClient.get('/drinks/drinkName/' + drinkName) 
-       // console.log("drinkInfo:" + res.data)
+        // console.log("drinkInfo:" + res.data)
         return res.data
     }catch(e){
         console.log(e)
@@ -100,7 +100,6 @@ export const ingredientsList = async (drinkId:any) => {
 }
 
 
-<<<<<<< HEAD
 export const getIngredients = async () => {
 
     try{
@@ -134,8 +133,6 @@ export const drinkInfo = async (drinkName:any) => {
 
     }
 }
-=======
-
 export const mixologyAddReview = async ( description:string, rate:number , userid:number, drinkid:number) =>{
     let credentials ={
         "id"  : 0 ,
@@ -160,21 +157,3 @@ export const mixologyAddReview = async ( description:string, rate:number , useri
     }
 }
 
- 
-export const addRecipe = async (ingredientId: any , drinkId: any) => {
-
-    try{
-
-        let res = await mixologyClient.post('ingredients/recipe')
-        return res.data
-    }catch(e){
-        console.log(e);
-        if(e.response){
-            throw new Error(e.response.data)
-        } else {
-            throw new Error("CANNOT SEND RECIPE INFO")
-        }
-
-    }
-}
->>>>>>> addDrink

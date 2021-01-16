@@ -48,6 +48,8 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
     var drinkCreatorPassword = JSON.parse(sessionStorage.getItem("drinkCreatorPassword"));
     var drinkId = JSON.parse(sessionStorage.getItem("drinkId"));
 
+    console.log(drinkName )
+    console.log(drinkId)
 
 
     await axios.post('http://localhost:8080/review',{
