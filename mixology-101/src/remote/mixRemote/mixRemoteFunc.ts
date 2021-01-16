@@ -176,3 +176,30 @@ export const addRecipe = async (ingredientId: any , drinkId: any) => {
 
     }
 }
+
+
+
+export const recommendLists = async () => {
+
+    try{
+        var returnList = [];
+        var res;
+       for(let v=32; v<35; v++){
+            res = await mixologyClient.get('/drinks/find/' + v) 
+            returnList.push(res.data)
+       }
+       res = await mixologyClient.get('/drinks/find/36') 
+       returnList.push(res.data)
+       
+       return returnList
+    }catch(e){
+        console.log(e)
+        if(e.response){
+            throw new Error(e.response.data)
+        } else {
+            throw new Error("CANNOT FIND INGREDIENTS LIST")
+        }
+        
+    }
+
+}

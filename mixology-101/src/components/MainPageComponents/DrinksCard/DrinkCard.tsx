@@ -15,7 +15,7 @@ const imageStyle = {
 
 const DrinkCard:any = (props:any)=>{
 
-    console.log("DrinkId: " + props.id)
+    //console.log("DrinkId: " + props.id)
     let reviewUrl = "review/" + props.id
     let imgUrl = "img/"+props.id+".PNG"
 
