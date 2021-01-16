@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import axios from 'axios'
 import MainFooter from './MainFooter'
 import MainBody from './MainBody'
+import logo2 from './images/logo2.png'
+
 
 const logoStyle = {
   width: '4.5rem',
@@ -57,8 +59,8 @@ var   isGuest = true;
     if(window.location.href.substring(22,) == 'home') isHome = true; 
     return(
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-logo"  href="#"><img style={logoStyle} src="/img/logo2.png" alt="Image showing logo"/></a>
-      <a className="navbar-brand" href="/home">Mixology<sup>101</sup></a>
+      <a className="navbar-logo"  href="#"><img style={logoStyle} src={logo2} alt="Image showing logo"/></a>
+      <a className="navbar-brand" href="#">Mixology<sup>101</sup></a>
 
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>

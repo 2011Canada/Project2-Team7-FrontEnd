@@ -10,29 +10,33 @@ import ReviewMain from './components/review/ReviewMain';
 import  DrinkMain  from './components/Drinks/DrinkMain';
 import { AddReviewForm} from './components/AddReviewForms/AddReview';
 import {CreateDrink} from './components/Drinks/AddDrinks/AddDrink'
-import { User } from './models/User';
+import './App.css';
 import MainPage from './components/MainPageComponents/MainPage';
 import {SelectIngredient} from './components/Drinks/AddDrinks/SelectIngredient';
 import {FavouriteForm} from "./components/Favourite/Favourite";
+import {Spring} from 'react-spring/renderprops'
+import Container from './components/Spring/Spring'
+import Index from './components/Index'
+
+
 
 export default function App() {
   return (
-    <div className="App">
+    <div className="App" >
+      
 
       <Router>
         <Switch>
-          <Route path = "/login"> <LoginMain /> </Route>
-          <Route path = "/logout"> <Logout /> </Route>
+          <Route exact path = "/"> <Index /> </Route>
+          <Route exact path = "/login"> <LoginMain /> </Route>
+          <Route exact path = "/logout"> <Logout /> </Route>
           <Route path = "/review"> <ReviewMain /> </Route>
-          <Route path = "/register" component = {RegisterForm}/>
+          <Route exact path = "/register" component = {RegisterForm}/>
           <Route path = "/home" component = {MainPage} />
           <Route path = "/drinks" component = {DrinkMain} />
-          <Route path = "/addReview" component  = {AddReviewForm}/>
           <Route path="/add-review" component  = {AddReviewForm}/>
           <Route path="/add-drink" component  = {CreateDrink}/>
-          <Route path="/select-ingredient" component  = {SelectIngredient}/>
-          
-          <Route path = "/favourite" component  = {FavouriteForm}/>
+          <Route path="/select-ingredient" component  = {SelectIngredient}/>  
         </Switch>
       </Router>
     </div>

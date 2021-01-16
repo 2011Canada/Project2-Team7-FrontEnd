@@ -4,12 +4,13 @@ import MainHeader from '../MainPageComponents/MainHeader'
 import MainFooter from '../MainPageComponents/MainFooter'
 
 
+
 const DrinkMain = ()=>{
 
     return(
         <div>
             <MainHeader setDrink={''}/>
-            <DrinkBody />
+             <DrinkBody />
             <MainFooter />
         </div>
         
