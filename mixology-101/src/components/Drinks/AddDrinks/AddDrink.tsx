@@ -2,7 +2,7 @@ import { Button, TextField } from "@material-ui/core";
 import axios from "axios";
 import React, { useEffect, useState } from "react"
 import { useForm } from "react-hook-form";
-import { addRecipe } from "../../../remote/mixRemote/mixRemoteFunc";
+// import { addRecipe } from "../../../remote/mixRemote/mixRemoteFunc";
 import MainHeader from "../../MainPageComponents/MainHeader";
 import { AddIngredient } from "./AddIngredient";
 import { SelectIngredient } from "./SelectIngredient";
@@ -58,7 +58,7 @@ export const CreateDrink: React.FunctionComponent<any> = () =>{
     return(
     <>
         <div>
-            <MainHeader/>
+            <MainHeader setDrink={{}}/>
         </div>
         <div>
             <form onSubmit = {handleSubmit(submitDrink)} >

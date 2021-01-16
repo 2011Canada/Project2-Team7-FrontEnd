@@ -8,8 +8,8 @@ import axios from 'axios'
 
 
 const bodyStyle = {
-  minHeight: '87vh',
-  backgroundColor: "whitesmoke",
+  minHeight: '90vh',
+  backgroundColor: "#e9e9e9",
   overflow: "auto"
 }
 
@@ -168,13 +168,15 @@ const MainBody = (props)=>{
                 />  
             </div>
 
+            
+
             <div className="row">
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
                             {(drinks.length > 0)  && 
                                 <div style={{}} className="col-12 col-sm-2 ">
-                                    <form className="form-inline" onSubmit={handleSubmit(getCall2)}>
+                                    <form className="form-inline text-center" onSubmit={handleSubmit(getCall2)}>
                                         <div className="form-group mx-sm-3 mb-2">
                                             <input type="text" 
                                             className="form-control" 
@@ -182,7 +184,7 @@ const MainBody = (props)=>{
                                             placeholder="Search by Ingredient" 
                                             ref={register()}
                                             />
-                                            <button type="submit" className="btn btn-primary mb-2">Search</button>
+                                            <button type="submit" className="btn btn-outline-primary my-3">Search</button>
                                         </div> 
                                     </form>
                                 </div> 
@@ -192,7 +194,8 @@ const MainBody = (props)=>{
                 </div>
             </div>
 
-            <div className="row">
+            <div className="container-fluid">
+                <div className="row">
                 {
                 drinks.map((element)=>{
                     return(
@@ -200,7 +203,7 @@ const MainBody = (props)=>{
                     <DrinkCard key={element.id} id={element.id}  name={element.name} degree={element.degree} creator={element.drinkCreator.username}/>
                     )  
                 })}
-
+                </div>
             </div>
         </div>
     )
