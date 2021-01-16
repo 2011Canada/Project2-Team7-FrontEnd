@@ -4,6 +4,7 @@ import { drinkInfo } from '../../remote/mixRemote/mixRemoteFunc'
 import { Ingredients } from './Ingredients'
 import { Review } from '../review/Review'
 import { Button} from '@material-ui/core'
+import { FavouriteForm } from '../Favourite/Favourite';
 
 const imageStyle = {
     width: "20%",
@@ -84,6 +85,7 @@ export class DrinkBody extends React.Component<any,any> {
                     Ingredient: {this.state.Ingredient}<br />
                     Creator: {this.state.creator}
                     </p>
+                    <FavouriteForm/>
                 </div>
             </div>
 
