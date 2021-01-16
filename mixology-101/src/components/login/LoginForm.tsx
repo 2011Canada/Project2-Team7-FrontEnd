@@ -79,7 +79,7 @@ export const LoginForm: React.FunctionComponent<ILoginProps> = (props) => {
         <>
         <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <div className={classes.paper}>
+            <div className={classes.paper} style={{minHeight: '62vh'}}>
         
 
             <form style={{backgroundColor: "whitesmoke", height:"40vh"}} className={classes.form} onSubmit={submitLogin}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -34,9 +34,11 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
 
   const classes = useStyles();
 
-  const {register, handleSubmit} = useForm();
+  const {register, handleSubmit, errors} = useForm();
 
   const submitAddReview = async (data:any) => {
+
+
     console.log(data)
     var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
     var drinkName = JSON.parse(sessionStorage.getItem("drinkName"));
@@ -48,41 +50,46 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
     var drinkCreatorPassword = JSON.parse(sessionStorage.getItem("drinkCreatorPassword"));
     var drinkId = JSON.parse(sessionStorage.getItem("drinkId"));
 
+    if(data.rate <0 || data.rate >5 ) {
+      console.log("you are not a valid input. go away!")
+      alert("Please input rating between 1 and 5")
+    }
 
 
-    await axios.post('http://localhost:8080/review',{
+      (data.rate >= 0 && data.rate <= 5  )&& await axios.post('http://localhost:8080/review',{
 
-      "author": {
-        "firstname": userInfo.firstname,
-        "id": userInfo.id,
-        "lastname": userInfo.lastname,
-        "password": userInfo.password,
-        "username": userInfo.username,
-      },
-      "description": data.description,
+        "author": {
+          "firstname": userInfo.firstname,
+          "id": userInfo.id,
+          "lastname": userInfo.lastname,
+          "password": userInfo.password,
+          "username": userInfo.username,
+        },
+        "description": data.description,
         "drink": {
-      "degree": drinkDegree,
+          "degree": drinkDegree,
           "drinkCreator": {
             "firstname": drinkCreatorFirstName,
             "id": drinkCreatorId,
             "lastname":drinkCreatorLastName,
             "password": drinkCreatorPassword,
             "username": drinkCreatorUsername
-      },
-      "id": drinkId,
+          },
+          "id": drinkId,
           "name": drinkName.name
-    },
-      "id": 0,
+        },
+        "id": 0,
         "rate": data.rate
 
-    })
-        .then((response)=>{
-          console.log("succefully submitted your review!", response.data)
-        })
-        .catch((err)=>{console.log(err)})
-  }
+      })
+          .then((response)=>{
+            console.log("succefully submitted your review!", response.data)
+          })
+          .catch((err)=>{console.log(err)})
+    }
 
-    return (
+
+  return (
         <Container component="main" maxWidth="xs">
           <CssBaseline/>
           <div className={classes.paper}>
@@ -100,7 +107,7 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
                       label="Rating"
                       name="rate"
                       autoComplete="rate"
-                      inputRef={register}
+                      inputRef={register()}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -130,4 +137,5 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
         </Container>
     );
   }
+
 

@@ -49,7 +49,7 @@ export const drinkInfoByName = async (drinkName:any) => {
 
     try{
         let res = await mixologyClient.get('/drinks/drinkName/' + drinkName) 
-       // console.log("drinkInfo:" + res.data)
+        // console.log("drinkInfo:" + res.data)
         return res.data
     }catch(e){
         console.log(e)
@@ -134,7 +134,6 @@ export const drinkInfo = async (drinkName:any) => {
 
     }
 }
-
 export const mixologyAddReview = async ( description:string, rate:number , userid:number, drinkid:number) =>{
     let credentials ={
         "id"  : 0 ,
@@ -159,20 +158,27 @@ export const mixologyAddReview = async ( description:string, rate:number , useri
     }
 }
 
- 
-export const addRecipe = async (ingredientId: any , drinkId: any) => {
+export const recommendLists = async () => {
 
     try{
-
-        let res = await mixologyClient.post('ingredients/recipe')
-        return res.data
+        var returnList = [];
+        var res;
+       for(let v=32; v<35; v++){
+            res = await mixologyClient.get('/drinks/find/' + v) 
+            returnList.push(res.data)
+       }
+       res = await mixologyClient.get('/drinks/find/36') 
+       returnList.push(res.data)
+       
+       return returnList
     }catch(e){
-        console.log(e);
+        console.log(e)
         if(e.response){
             throw new Error(e.response.data)
         } else {
-            throw new Error("CANNOT SEND RECIPE INFO")
+            throw new Error("CANNOT FIND INGREDIENTS LIST")
         }
-
+        
     }
+
 }

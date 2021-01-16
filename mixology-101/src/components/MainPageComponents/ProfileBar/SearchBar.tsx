@@ -56,7 +56,7 @@ if(width == "0px"){
 } else {
     document.getElementById("searchInput1").style.width = "0px"
 }
-console.log(width)
+//console.log(width)
 
 }
 

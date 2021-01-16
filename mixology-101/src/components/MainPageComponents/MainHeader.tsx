@@ -28,7 +28,7 @@ var   isGuest = true;
   
   const searchDrink = async (event:any)=>{
     event.preventDefault()
-    console.log("event.drinkname: " + drinkName)
+    //console.log("event.drinkname: " + drinkName)
     setDrink(drinkName)
   }
 
@@ -55,6 +55,8 @@ var   isGuest = true;
       $registBtn = null
   }
 
+    let isHome = false;
+    if(window.location.href.substring(22,) == 'home') isHome = true; 
     return(
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-logo"  href="#"><img style={logoStyle} src={logo2} alt="Image showing logo"/></a>
@@ -72,12 +74,14 @@ var   isGuest = true;
           {$loginBtn}
           {$registBtn}
         </ul>
+        {isHome ? 
+          <form onSubmit={searchDrink} className="form-inline my-2 my-lg-0">
+          <input id="drinkname" className="form-control mr-sm-2" type="search" placeholder="Find a drink" aria-label="Search" onChange={event => setDrinkName(event.target.value)} />
+          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          :  ''
+         }
         
-        <form onSubmit={searchDrink} className="form-inline my-2 my-lg-0">
-            <input id="drinkname" className="form-control mr-sm-2" type="search" placeholder="Find a drink" aria-label="Search" onChange={event => setDrinkName(event.target.value)} />
-            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-
       </div>
 
     </nav>

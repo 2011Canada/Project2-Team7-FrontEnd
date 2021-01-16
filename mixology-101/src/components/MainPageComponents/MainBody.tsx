@@ -4,7 +4,7 @@ import DrinkCard from './DrinksCard/DrinkCard'
 import ProfileBar from './ProfileBar/ProfileBar'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
-
+import { recommendLists } from '../../remote/mixRemote/mixRemoteFunc'
 
 
 const bodyStyle = {
@@ -19,7 +19,8 @@ const MainBody = (props)=>{
    // console.log("MainBody Start")
     const [drinks, setDrinks] = useState([])
     let [call, setCall] = useState(null)
-    let [cnt, setCnt] = useState(1)
+    let [isFirst, setFirst] = useState(true)
+    let [isHome, setIsHome] = useState(true)
     let [drinkName, setName] = useState(props.myDrink)
     const [ valueSlider, setValueSlider ] = useState(50); //Tracks the slider
     const [ingredient, setIngredient] = useState("")
@@ -32,41 +33,41 @@ const MainBody = (props)=>{
      useEffect(() => {document.title = "Home"}, [])
     
     
+
+    //Find a drink by name
     const setTheDrink = async (dName:any)=>{
-       // console.log("setTheDrink Start")
         setName(dName)
-        setCnt(1)
-        setDrinks([])
+        setFirst(true)
+        //setDrinks([])
         const response =  await axios.get(`http://localhost:8080/drinks/drinkName/${dName}`).catch((err)=>{
             console.log(err)
         })
         if(response && response.data){
-            //console.log("response.data: "+ response.data)
             setDrinks([response.data])
         }
-        
-        // else{
-        //     alert(`${dName} DOES NOT EXIST`)
-        // }
-
     }
 
-
-    if(cnt === 1){
-       // console.log("Here because of cnt == 1")
-        if( props.myDrink !== null && props.myDrink !== '' && props.myDrink !== undefined){
+    const recommendedDrinks = async ()=>{
+        let list = await recommendLists()
+        setDrinks([list[0],list[1],list[2],list[3]])
+    }
+  
+    if(isFirst){
+        if(props.myDrink !== null && props.myDrink !== '' && props.myDrink !== undefined){
             setTheDrink(props.myDrink);
-            setCnt(cnt+1)
+            setFirst(false)
         }
+    }
+
+    if(isHome){
+        recommendedDrinks();
+        setIsHome(false);
     }
 
     if(drinkName !== props.myDrink){
-        //console.log("drinkName !== props.myDrink")
-        
         setTheDrink(props.myDrink);
     }
     
-  
 
     const getCall1 = (e:Event)=>{ //DONE
         e.preventDefault();
@@ -82,7 +83,7 @@ const MainBody = (props)=>{
     }
 
     const getCall3 = ()=>{ //WORKING
-        console.log("call 3 being called")
+        //console.log("call 3 being called")
         getDrinkByAlcoholContent()
         setCall(3)
     }
@@ -158,8 +159,6 @@ const MainBody = (props)=>{
 
     return(
         
-        
-
         <div className="container-fluid" style={bodyStyle}>
             <div className="row">
                 <ProfileBar 
@@ -167,7 +166,6 @@ const MainBody = (props)=>{
                 setValueSlider={setValueSlider} getValueSlider={getValueSlider} valueSlider={valueSlider}
                 />  
             </div>
-
             <div className="row">
                 <div className="container">
                     <div className="row">
@@ -200,7 +198,6 @@ const MainBody = (props)=>{
                     <DrinkCard key={element.id} id={element.id}  name={element.name} degree={element.degree} creator={element.drinkCreator.username}/>
                     )  
                 })}
-
             </div>
         </div>
     )

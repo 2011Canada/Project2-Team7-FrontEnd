@@ -10,6 +10,7 @@ import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import MainHeader from '../MainPageComponents/MainHeader';
+import MainFooter from '../MainPageComponents/MainFooter';
 
 import { Route } from 'react-router';
 import { Link as RLink } from 'react-router-dom';
@@ -171,6 +172,7 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
         <Copyright />
       </Box>
     </Container>
+    <MainFooter />
   </>
   );
 }

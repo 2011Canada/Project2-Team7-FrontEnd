@@ -3,9 +3,6 @@ import React, { useState, useEffect } from 'react';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import RangeSlider from 'react-bootstrap-range-slider';
 import axios from 'axios'
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
 
 
 const barStyle = {
@@ -61,7 +58,7 @@ var   isGuest = true;
 
     const getFavorites = async (e:any)=>{
         e.preventDefault()
-        console.log("getdrinksbyalcoholcontentSTART")
+        //console.log("getdrinksbyalcoholcontentSTART")
         const response = await axios.get(`http://localhost:8080/user/favoriteDrinks/${userInfo.id}`).catch((err)=>{console.log(err)})
         setFavorites([])
         
@@ -83,6 +80,10 @@ var   isGuest = true;
     useEffect(() => {
     }, [isHidden])
 
+    function addDrinkUrl(){
+        //****** Should change to Adding drink page URL ****** */
+        window.location.href="./add-drink"
+    }
 
     return(
         <div style={barStyle} className="col-12">
@@ -167,7 +168,15 @@ var   isGuest = true;
                 </div>
 
 
-               
+                {/* SEARCH DRINKS BY INGREDIENT */}
+                <div style={{}} className="col-12 col-sm-2 ">
+                    <form style={{height:"100%"}}>
+                            <button style={SearchButtonStyling} type="button" className="btn btn-info btn-circle btn-xl" onClick={addDrinkUrl} >
+                               <i className="fas fa-plus-circle"></i>
+                            </button>
+                            <p className="badge">Add Your Drink</p>
+                    </form>
+                </div>
 
             </div>
 

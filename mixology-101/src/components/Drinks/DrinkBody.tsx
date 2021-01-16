@@ -4,6 +4,7 @@ import { drinkInfo } from '../../remote/mixRemote/mixRemoteFunc'
 import { Ingredients } from './Ingredients'
 import { Review } from '../review/Review'
 import { Button} from '@material-ui/core'
+import { FavouriteForm } from '../Favourite/Favourite';
 
 const imageStyle = {
     width: "20%",
@@ -71,18 +72,20 @@ export class DrinkBody extends React.Component<any,any> {
     }
   
    render(){
-   
+      
+    let imgUrl = "../img/"+this.state.drinkId+".PNG"
     return(
         <div className="container-fluid" style={bodyStyle}>
             <div >
                 <div className="row">
-                    <img style={imageStyle} className="card-img-top" src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview" alt="Card image cap" />
+                    <img style={imageStyle} className="card-img-top" src={imgUrl} alt="Card image cap" />
                     <p style={contentStyle}>
                     Name: <strong > {this.state.drinkName}</strong><br />
                     Degree:  {this.state.degree}<br />
                     Ingredient: {this.state.Ingredient}<br />
                     Creator: {this.state.creator}
                     </p>
+                    <FavouriteForm/>
                 </div>
             </div>
 
