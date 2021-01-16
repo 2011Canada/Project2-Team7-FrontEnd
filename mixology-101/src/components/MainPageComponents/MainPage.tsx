@@ -7,6 +7,7 @@ import MainFooter from './MainFooter'
 const MainPage = ()=>{
 
     const[myDrink, setDrink] = useState('')
+    
     return(
         <div>
             <MainHeader setDrink={setDrink}/>

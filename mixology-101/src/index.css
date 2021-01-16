@@ -15,7 +15,7 @@ code {
 }
 
 
-@keyframes glowing {
+/* @keyframes glowing {
         0% {
           background-color: #8deb71;
           box-shadow: 0 0 5px #81db66;
@@ -34,6 +34,6 @@ code {
 #mixologyButton {
   animation: glowing 1300ms infinite;
 }
-
+ */
 
 
