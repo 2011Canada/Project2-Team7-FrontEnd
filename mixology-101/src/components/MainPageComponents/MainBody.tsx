@@ -143,7 +143,6 @@ const MainBody = (props)=>{
 
     return(
         
-
         <div className="container-fluid" style={bodyStyle}>
             <div className="row">
                 <ProfileBar 
@@ -151,14 +150,11 @@ const MainBody = (props)=>{
                 setValueSlider={setValueSlider} getValueSlider={getValueSlider} valueSlider={valueSlider}
                 />  
             </div>
-
             <div className="row">
-
                 {
                 drinks.map((element)=>{
                     return(<DrinkCard key={element.id} id={element.id}  name={element.name} degree={element.degree} creator={element.drinkCreator.username}/>)  
                 })}
-
             </div>
         </div>
     )

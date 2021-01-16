@@ -2,8 +2,8 @@ import React from 'react'
 import DrinkName from './DrinkName'
 
 const cardStyle = {
-    width: "70%",
-        borderRadius: "18px"
+    width: "100%",
+    borderRadius: "18px"
 }
 
 const imageStyle = {
@@ -26,7 +26,7 @@ const DrinkCard:any = (props:any)=>{
             <div className="card-body">
                 <DrinkName key={props.id} id={props.id}  name={props.name} degree={props.degree} creator={props.username}/>
                 <small className="badge badge-pill bg-warning text-dark "> {props.degree}% {/*will be an object later */}</small> &nbsp;
-                <p className="text-right btn badge btn-dark"><a style={{textDecorationColor: '#000', textDecorationStyle:'solid'}} href={reviewUrl}>Reviews</a> </p>
+                <p className="text-right btn badge btn-dark"><a style={{textDecorationColor: '#000', textDecorationStyle:'solid', textDecoration: 'none', color:'white'}} href={reviewUrl}>Reviews</a> </p>
                 <p className="card-text">Created by: {props.creator}</p>   
             </div>
         </div>
