@@ -26,7 +26,7 @@ var   isGuest = true;
   
   const searchDrink = async (event:any)=>{
     event.preventDefault()
-    console.log("event.drinkname: " + drinkName)
+    //console.log("event.drinkname: " + drinkName)
     setDrink(drinkName)
   }
 
