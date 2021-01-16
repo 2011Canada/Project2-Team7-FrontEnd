@@ -58,7 +58,7 @@ export const CreateDrink: React.FunctionComponent<any> = () =>{
     return(
     <>
         <div>
-            <MainHeader/>
+            <MainHeader setDrink={''}/>
         </div>
         <div>
             <form onSubmit = {handleSubmit(submitDrink)} >
