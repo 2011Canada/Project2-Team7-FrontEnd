@@ -73,7 +73,7 @@ export const LoginForm: React.FunctionComponent<ILoginProps> = (props) => {
         <>
         <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <div className={classes.paper}>
+            <div className={classes.paper} style={{minHeight: '62vh'}}>
         
             <Typography component="h1" variant="h4">
                 Login
