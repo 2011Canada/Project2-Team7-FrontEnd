@@ -9,8 +9,11 @@ import { RegisterForm } from './components/RegisterForms/Register';
 import ReviewMain from './components/review/ReviewMain';
 import  DrinkMain  from './components/Drinks/DrinkMain';
 import { AddReviewForm} from './components/AddReviewForms/AddReview';
-import './App.css';
+import {CreateDrink} from './components/Drinks/AddDrinks/AddDrink'
+import { User } from './models/User';
 import MainPage from './components/MainPageComponents/MainPage';
+import {SelectIngredient} from './components/Drinks/AddDrinks/SelectIngredient';
+import {FavouriteForm} from "./components/Favourite/Favourite";
 
 export default function App() {
   return (
@@ -25,6 +28,11 @@ export default function App() {
           <Route path = "/home" component = {MainPage} />
           <Route path = "/drinks" component = {DrinkMain} />
           <Route path = "/addReview" component  = {AddReviewForm}/>
+          <Route path="/add-review" component  = {AddReviewForm}/>
+          <Route path="/add-drink" component  = {CreateDrink}/>
+          <Route path="/select-ingredient" component  = {SelectIngredient}/>
+          
+          <Route path = "/favourite" component  = {FavouriteForm}/>
         </Switch>
       </Router>
     </div>
