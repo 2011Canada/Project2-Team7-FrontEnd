@@ -70,7 +70,8 @@ var   isGuest = true;
 
 
     function addDrinkUrl(){
-        window.location.href="./login"
+        //****** Should change to Adding drink page URL ****** */
+        window.location.href="./add-drink"
     }
 
     return(
