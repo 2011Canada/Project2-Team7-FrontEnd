@@ -69,7 +69,9 @@ var   isGuest = true;
     }
 
 
-
+    function addDrinkUrl(){
+        window.location.href="./login"
+    }
 
     return(
         <div style={barStyle} className="col-12">
@@ -144,10 +146,10 @@ var   isGuest = true;
                 {/* SEARCH DRINKS BY INGREDIENT */}
                 <div style={{}} className="col-12 col-sm-2 ">
                     <form style={{height:"100%"}}>
-                            <button style={SearchButtonStyling} type="button" className="btn btn-info btn-circle btn-xl">
-                                <i className="fas fa-mortar-pestle"></i>
+                            <button style={SearchButtonStyling} type="button" className="btn btn-info btn-circle btn-xl" onClick={addDrinkUrl} >
+                               <i className="fas fa-plus-circle"></i>
                             </button>
-                            <p className="badge">Search By Ingridient</p>
+                            <p className="badge">Add Your Drink</p>
                     </form>
                 </div>
 
