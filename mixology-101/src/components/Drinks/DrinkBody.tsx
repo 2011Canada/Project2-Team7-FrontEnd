@@ -5,6 +5,8 @@ import { Ingredients } from './Ingredients'
 import { Review } from '../review/Review'
 import { Button} from '@material-ui/core'
 import { FavouriteForm } from '../Favourite/Favourite';
+import { PopUpForm } from '../PopUpWindow/PopUpForm';
+import { ButtonToolbar } from 'react-bootstrap';
 
 const imageStyle = {
     width: "20%",
@@ -35,7 +37,9 @@ export class DrinkBody extends React.Component<any,any> {
             drinkName: "",
             degree: 0,
             Ingredient: ["a","b"],
-            creator: ""
+            creator: "",
+            addModalShow: false
+
         }
     }
 
@@ -72,7 +76,7 @@ export class DrinkBody extends React.Component<any,any> {
     }
   
    render(){
-      
+    let addModalClose = ()=> this.setState({addModalShow:false});  
     let imgUrl = "../img/"+this.state.drinkId+".PNG"
     return(
         <div className="container-fluid" style={bodyStyle}>
@@ -102,7 +106,19 @@ export class DrinkBody extends React.Component<any,any> {
             <div className="container-fluid">
                 <div className="row">
                 <h4 style={{ marginLeft:20, marginTop: 50, marginRight:40}}>** Review ** 
-                <Button type="submit" variant="outlined" style={btnStyle} href="/addReview">Add</Button>
+                <Button type="submit" variant="outlined" style={btnStyle} href={`/pop-up-form`}>Add</Button>
+                <ButtonToolbar>
+                    <Button
+                        variant = "outlined"
+                        onClick = {()=> this.setState({addModalShow: true})}
+                    >
+                     Add Review   
+                    </Button>
+                    <PopUpForm
+                    show = {this.state.addModalShow}
+                    onHide ={addModalClose}
+                    />
+                </ButtonToolbar>
                 </h4>
                 </div>
                 <div className="row" >

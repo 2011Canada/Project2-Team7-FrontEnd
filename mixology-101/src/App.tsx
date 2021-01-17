@@ -13,7 +13,7 @@ import {CreateDrink} from './components/Drinks/AddDrinks/AddDrink'
 import './App.css';
 import MainPage from './components/MainPageComponents/MainPage';
 import {SelectIngredient} from './components/Drinks/AddDrinks/SelectIngredient';
-import {FavouriteForm} from "./components/Favourite/Favourite";
+import { PopUpForm } from './components/PopUpWindow/PopUpForm';
 
 export default function App() {
   return (
@@ -30,7 +30,7 @@ export default function App() {
           <Route path="/add-review" component  = {AddReviewForm}/>
           <Route path="/add-drink" component  = {CreateDrink}/>
           <Route path="/select-ingredient" component  = {SelectIngredient}/>
-      
+          <Route path ="/pop-up-review" component = {PopUpForm}/>
         </Switch>
       </Router>
     </div>
