@@ -24,7 +24,6 @@ const contentStyle = {
     margin: "30px 0 0 0"
 }
 
-
 export class DrinkBody extends React.Component<any,any> {
 
     constructor(props:any){
@@ -102,7 +101,11 @@ export class DrinkBody extends React.Component<any,any> {
             <div className="container-fluid">
                 <div className="row">
                 <h4 style={{ marginLeft:20, marginTop: 50, marginRight:40}}>** Review ** 
+
                 <Button type="submit" variant="outlined" style={btnStyle} href="/addReview">Add</Button>
+                    
+
+                
                 </h4>
                 </div>
                 <div className="row" >
