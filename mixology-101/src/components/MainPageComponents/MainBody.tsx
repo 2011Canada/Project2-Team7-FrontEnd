@@ -1,18 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 // import getAllDrinks from '../../utils/asyncCalls';
 import DrinkCard from './DrinksCard/DrinkCard'
 import ProfileBar from './ProfileBar/ProfileBar'
+import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import { recommendLists } from '../../remote/mixRemote/mixRemoteFunc'
 
 
 const bodyStyle = {
-  minHeight: '87vh',
-  backgroundColor: "whitesmoke",
-//   background: "url('./avatarbg.png')",
-//   backgroundSize:"contain",
-//   backgroundRepeat: "no-repeat",
-//   backgroundPosition: "center",
+  minHeight: '90vh',
+  backgroundColor: "#e9e9e9",
   overflow: "auto"
 }
 
@@ -26,6 +23,14 @@ const MainBody = (props)=>{
     let [isHome, setIsHome] = useState(true)
     let [drinkName, setName] = useState(props.myDrink)
     const [ valueSlider, setValueSlider ] = useState(50); //Tracks the slider
+    const [ingredient, setIngredient] = useState("")
+    const {register, handleSubmit} = useForm()
+
+    useEffect(() => {
+        console.log("USEEFFECT INGRIDIENT SET", ingredient)
+    }, [ingredient])
+
+     useEffect(() => {document.title = "Home"}, [])
     
     
 
@@ -70,9 +75,11 @@ const MainBody = (props)=>{
         setCall(1)
     }
 
-    const getCall2 = (e:Event)=>{
-        e.preventDefault();
+    let getCall2 = (data:any)=>{
+        console.log(data, "DATA INGRIDIENT INSIDE CALL 2")
         setCall(2)
+        setIngredient(data.ingredient)
+        getDrinksByIngredientName(data.ingredient);
     }
 
     const getCall3 = ()=>{ //WORKING
@@ -86,7 +93,10 @@ const MainBody = (props)=>{
         setCall(4)
     }
 
-// useEffect(() => {}, [valueSlider])
+
+
+
+
 
     const getAllDrinks = async ()=>{
         const response = await axios.get('http://localhost:8080/drinks').catch((err)=>{console.log(err)})
@@ -126,20 +136,24 @@ const MainBody = (props)=>{
     }
 
     const getValueSlider = (()=>{
-        console.log("valueSlider has been set to ", valueSlider)
+        // console.log("valueSlider has been set to ", valueSlider)
         return valueSlider
     })
 
-  
-    
-    
-    
-    // call === 1 ? getAllDrinks() : console.log()
-    // call === 3 ? getDrinkByAlcoholContent() : console.log()
+    const getDrinksByIngredientName = async (ing)=>{
+        console.log(ingredient, "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+        console.log("START OF  GET DRINK BY ING NAME SEARCH")
+        const response = await axios.get(`http://localhost:8080/drinks/ingredientName/${ing}`).catch((err)=>{console.log(err)})
+        setDrinks([])
 
+            if((response && response.data)){
 
-//  useEffect(() => {}, []);
-//  useEffect(() => {}, [])
+            setDrinks(response.data)
+            
+        } 
+    }
+
+    
 
     return(
         
@@ -150,11 +164,41 @@ const MainBody = (props)=>{
                 setValueSlider={setValueSlider} getValueSlider={getValueSlider} valueSlider={valueSlider}
                 />  
             </div>
+
+            
+
             <div className="row">
+
+                        <div className="col-12">
+                            {(drinks.length > 0)  && 
+                                <div style={{}} className="col-12 col-sm-2 ">
+                                    <form className="form-inline text-center" onSubmit={handleSubmit(getCall2)}>
+                                        <div className="form-group mx-sm-3 mb-2">
+                                            <input type="text" 
+                                            className="form-control" 
+                                            name="ingredient" 
+                                            placeholder="Search by Ingredient" 
+                                            ref={register()}
+                                            />
+                                            <button type="submit" style={{border:"#ff914d solid 2px"}} className="btn btn-outline my-3">Search</button>
+                                        </div> 
+                                    </form>
+                                </div> 
+                            }
+                        </div>
+
+            </div>
+
+            <div className="container-fluid">
+                <div className="row">
                 {
                 drinks.map((element)=>{
-                    return(<DrinkCard key={element.id} id={element.id}  name={element.name} degree={element.degree} creator={element.drinkCreator.username}/>)  
+                    return(
+                    
+                    <DrinkCard key={element.id} id={element.id}  name={element.name} degree={element.degree} creator={element.drinkCreator.username}/>
+                    )  
                 })}
+                </div>
             </div>
         </div>
     )

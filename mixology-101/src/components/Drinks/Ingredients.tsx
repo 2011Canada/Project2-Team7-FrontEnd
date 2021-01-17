@@ -1,3 +1,4 @@
+import { emphasize } from '@material-ui/core';
 import React from 'react';
 import { ingredientsList } from '../../remote/mixRemote/mixRemoteFunc'
 
@@ -39,7 +40,7 @@ export class Ingredients extends React.Component<any, any> {
         }
        
         return (
-            <div>
+            <div className ="text-danger">
                  {returnList}
             </div>
         )

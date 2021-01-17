@@ -5,7 +5,7 @@ const DrinkName:any = (props:any)=>{
     let drinkUrl = "/drinks/" + props.name;
 
     return(
-        <h5><strong><a href={drinkUrl} style={aStyle}>{props.name}</a></strong></h5>
+        <h5><a href={drinkUrl} style={aStyle}>{props.name}</a></h5>
     )
 }
 var aStyle = {

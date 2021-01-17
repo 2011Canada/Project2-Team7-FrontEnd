@@ -177,6 +177,7 @@ export const recommendLists = async () => {
             throw new Error(e.response.data)
         } else {
             throw new Error("CANNOT FIND INGREDIENTS LIST")
+            console.log("cannot find ingr list")
         }
         
     }

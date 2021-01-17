@@ -54,9 +54,13 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
       console.log("you are not a valid input. go away!")
       alert("Please input rating between 1 and 5")
     }
+    if(userInfo === undefined ||  userInfo === null ) {
+      console.log("you are not logged in, go login or register.")
+      alert("you are not logged in, go login or register.")
+    }
 
 
-      (data.rate >= 0 && data.rate <= 5  )&& await axios.post('http://localhost:8080/review',{
+      (data.rate >= 0 && data.rate <= 5  && (userInfo != undefined))&& await axios.post('http://localhost:8080/review',{
 
         "author": {
           "firstname": userInfo.firstname,

@@ -16,10 +16,11 @@ interface ILoginProps{
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-      marginTop: theme.spacing(8),
+    //   marginTop: theme.spacing(8),
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
+    
     },
     avatar: {
       margin: theme.spacing(1),
@@ -27,11 +28,17 @@ const useStyles = makeStyles((theme) => ({
     },
     form: {
       width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(3),
+      marginTop: theme.spacing(10),
+      padding: "1.5rem",
+      borderRadius: "18px",
+      background: "#38372f",
+      boxShadow:  "20px 20px 60px #ffffff, -20px -20px 60px #161614"
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
     },
+
+
   }));
 
 export const LoginForm: React.FunctionComponent<ILoginProps> = (props) => {
@@ -73,12 +80,13 @@ export const LoginForm: React.FunctionComponent<ILoginProps> = (props) => {
         <>
         <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <div className={classes.paper} style={{minHeight: '62vh'}}>
+            <div className={classes.paper} style={{minHeight: '71.4vh'}}>
         
-            <Typography component="h1" variant="h4">
-                Login
-            </Typography>
-            <form  className={classes.form} onSubmit={submitLogin}>
+
+            <form style={{backgroundColor: "whitesmoke", height:"40vh"}} className={classes.form} onSubmit={submitLogin}>
+                <Typography component="h1" variant="h4" className="mb-5">
+                    Login
+                </Typography>
                 <Grid
                     container
                     direction="column"
