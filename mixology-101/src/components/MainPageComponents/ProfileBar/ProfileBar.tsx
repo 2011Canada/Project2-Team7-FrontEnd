@@ -95,7 +95,11 @@ var   isGuest = true;
 
     function addDrinkUrl(){
         //****** Should change to Adding drink page URL ****** */
-        window.location.href="./add-drink"
+        if(!isGuest){
+            window.location.href="./add-drink"
+        }else{
+            alert("Please login!")
+        }
     }
 
     return(
@@ -185,7 +189,7 @@ var   isGuest = true;
                 </div>
 
 
-                {/* SEARCH DRINKS BY INGREDIENT */}
+                {/* ADD DRINK*/}
                 <div style={{}} className="col-12 col-sm-2 ">
                     <form style={{height:"100%"}}>
                             <button style={SearchButtonStyling} type="button" className="btn btn-info btn-circle btn-xl" onClick={addDrinkUrl} >

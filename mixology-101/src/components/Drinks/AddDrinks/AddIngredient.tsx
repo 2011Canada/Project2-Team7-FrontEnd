@@ -37,7 +37,7 @@ export const AddIngredient:React.FunctionComponent<any> = ()=>{
                 fullWidth
                 inputRef = {register}
               />
-            <Button type="submit"  variant="contained" color="primary" fullWidth>
+            <Button type="submit"  variant="outlined"  fullWidth>
                     Add Ingredient
             </Button> 
             </form>
