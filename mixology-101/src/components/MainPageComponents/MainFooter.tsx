@@ -16,7 +16,7 @@ const MainFooter = ()=>{
     return(
 
         <footer className="bg-light text-dark text-center text-lg-start" style={footer}>
-             <a className="text-dark badge" href="#!" style={{fontSize:"20px"}}> Mixology.com&#169;</a>
+             <a className="text-dark badge" href={"/"} style={{fontSize:"20px"}}> Mixology.com&#169;</a>
             <Wave fill='#ff914d'
             paused={false}
             options={{

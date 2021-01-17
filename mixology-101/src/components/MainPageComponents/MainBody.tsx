@@ -151,8 +151,6 @@ const MainBody = (props)=>{
             setDrinks(response.data)
             
         } 
-
-
     }
 
     
@@ -170,8 +168,7 @@ const MainBody = (props)=>{
             
 
             <div className="row">
-                <div className="container">
-                    <div className="row">
+
                         <div className="col-12">
                             {(drinks.length > 0)  && 
                                 <div style={{}} className="col-12 col-sm-2 ">
@@ -183,14 +180,13 @@ const MainBody = (props)=>{
                                             placeholder="Search by Ingredient" 
                                             ref={register()}
                                             />
-                                            <button type="submit" className="btn btn-outline-primary my-3">Search</button>
+                                            <button type="submit" style={{border:"#ff914d solid 2px"}} className="btn btn-outline my-3">Search</button>
                                         </div> 
                                     </form>
                                 </div> 
                             }
                         </div>
-                    </div>
-                </div>
+
             </div>
 
             <div className="container-fluid">

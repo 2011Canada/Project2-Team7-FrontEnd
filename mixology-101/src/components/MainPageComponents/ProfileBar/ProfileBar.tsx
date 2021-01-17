@@ -34,9 +34,9 @@ const SearchButtonStyling = {
 }
 
 const profileDivStyling = {
-    backgroundColor: "rgba(0,0,0,0.3)",
+    backgroundColor: "rgba(255,243,205,0.2)",
     borderRadius: "18px",
-    border:"1px solid rgba(255,255,255,0.5)",
+    // borderBottom:"1px solid rgba(255,255,255,0.5)",
     padding: "0"
 }
 
@@ -63,7 +63,8 @@ var   isGuest = true;
   
 
 
-    const getFavorites = async (e:any)=>{
+ 
+        const getFavorites = async (e:any)=>{
         e.preventDefault()
         //console.log("getdrinksbyalcoholcontentSTART")
         if(!isGuest){
@@ -79,9 +80,10 @@ var   isGuest = true;
 
             getHidden();
         }else{
-            alert("Plaes login!")
+            alert("Please login to check your favorite drinks")
         }
     }
+
 
     const getHidden = ()=>{
         isHidden ? setIsHidden(false) :  setIsHidden(true)
@@ -93,12 +95,20 @@ var   isGuest = true;
 
     function addDrinkUrl(){
         //****** Should change to Adding drink page URL ****** */
-        window.location.href="./add-drink"
+        if(!isGuest){
+            window.location.href="./add-drink"
+        }else{
+            alert("Please login!")
+        }
     }
 
     return(
         <div style={barStyle} className="col-12">
             <div className="row p-3">
+
+                <div className="col-sm-1"></div>
+
+
                 <div style={profileDivStyling} className="col-12 col-sm-2 text-center">
                     <img style={imageStyle} src="https://i.pravatar.cc/50" alt="Profile Picture of user"/>
                     <h5>{!isGuest? (userInfo.firstname + "  " + userInfo.lastname) : "Guest"} </h5>
@@ -108,7 +118,7 @@ var   isGuest = true;
 
 
                 {/* SEARCH ALL DRINKS */}
-                <div style={{}} className="col-12 col-sm-3 text-center">
+                <div style={{}} className="col-12 col-sm-2 text-center">
                     <form onSubmit={props.getCall1} style={{height:"100%"}}>
                             <button  style={SearchButtonStyling} type="submit" className="btn btn-success btn-circle btn-xl">
                                 <i className="fa fa-cocktail"></i>
@@ -121,7 +131,7 @@ var   isGuest = true;
 
 
                 {/* SEARCH FAVORITE DRINKS */}
-                <div style={{}} className="col-12 col-sm-3 text-center">
+                <div style={{}} className="col-12 col-sm-2 text-center">
                     <form onSubmit={getFavorites} style={{height:"100%"}}>
                             <button style={SearchButtonStyling} type="submit" className="btn btn-danger btn-circle btn-xl">
                                 <i className="fa fa-heart"></i>
@@ -147,7 +157,7 @@ var   isGuest = true;
 
 
                 {/* SEARCH DRINKS BY ALCOHOL CONTENT */}
-                <div style={{}} className="col-12 col-sm-3 text-center">
+                <div style={{}} className="col-12 col-sm-2 text-center">
 
                     <p className="badge">Alcohol Content</p>  
                     <form onSubmit={props.getCall3} style={{height:"100%"}}>
@@ -179,7 +189,7 @@ var   isGuest = true;
                 </div>
 
 
-                {/* SEARCH DRINKS BY INGREDIENT */}
+                {/* ADD DRINK*/}
                 <div style={{}} className="col-12 col-sm-2 ">
                     <form style={{height:"100%"}}>
                             <button style={SearchButtonStyling} type="button" className="btn btn-info btn-circle btn-xl" onClick={addDrinkUrl} >
@@ -188,6 +198,8 @@ var   isGuest = true;
                             <p className="badge">Add Your Drink</p>
                     </form>
                 </div>
+
+                <div className="col-sm-1"></div>
 
             </div>
 

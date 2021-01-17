@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
+    
     },
     avatar: {
       margin: theme.spacing(1),
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     },
     form: {
       width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(10),
+      marginTop: theme.spacing(18),
       padding: "1.5rem",
       borderRadius: "18px",
       background: "#38372f",
@@ -79,7 +80,7 @@ export const LoginForm: React.FunctionComponent<ILoginProps> = (props) => {
         <>
         <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <div className={classes.paper} style={{minHeight: '62vh'}}>
+            <div className={classes.paper} style={{minHeight: '71.4vh'}}>
         
 
             <form style={{backgroundColor: "whitesmoke", height:"40vh"}} className={classes.form} onSubmit={submitLogin}>

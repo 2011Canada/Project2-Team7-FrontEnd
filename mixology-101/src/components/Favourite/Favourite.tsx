@@ -47,7 +47,9 @@ export const FavouriteForm: React.FunctionComponent<any> = () =>{
         var drinkCreatorPassword = JSON.parse(sessionStorage.getItem("drinkCreatorPassword"));
         var drinkId = JSON.parse(sessionStorage.getItem("drinkId"));
 
-        await axios.post('http://localhost:8080/user/addFavorite',{
+
+     !userInfo && alert("Please Login")
+     userInfo && await axios.post('http://localhost:8080/user/addFavorite',{
 
             "drink": {
             "degree": drinkDegree,
@@ -75,21 +77,29 @@ export const FavouriteForm: React.FunctionComponent<any> = () =>{
                 alert("Added to favourites")
                 console.log("succefully submitted your favorite drink!", response.data)
             })
-            .catch((err)=>{console.log(err)})
+            .catch((err)=>{
+               alert("Please Login to add to Favorite")
+            })
 
     }
 
     return (
-        <Container component="main" maxWidth="xs">
+        <div id="heart" style={{width:"30px", height:"30px"}}>
+            <Container component="main" maxWidth="xs">
             <CssBaseline/>
             <div className={classes.paper}>
                 <form className={classes.form} noValidate onSubmit={ handleSubmit(submitFavourite)}>
                     <Button type="submit">
-                        <i className="fa fa-heart fa-lg"></i>
+                      <i className="fa fa-heart fa-3x text-danger"></i>
                     </Button>
+                    <p className="mx-3">Fav!</p>
                 </form>
             </div>
         </Container>
+        </div>
     );
+        
+        
+        
 }
 

@@ -59,7 +59,7 @@ var   isGuest = true;
     if(window.location.href.substring(22,) == 'home') isHome = true; 
     return(
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-logo"  href="#"><img style={logoStyle} src={logo2} alt="Image showing logo"/></a>
+      <a className="navbar-logo"  href="/home"><img style={logoStyle} src={logo2} alt="Image showing logo"/></a>
       <a className="navbar-brand" href="#">Mixology<sup>101</sup></a>
 
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,8 +76,8 @@ var   isGuest = true;
         </ul>
         {isHome ? 
           <form onSubmit={searchDrink} className="form-inline my-2 my-lg-0">
-          <input id="drinkname" className="form-control mr-sm-2" type="search" placeholder="Find a drink" aria-label="Search" onChange={event => setDrinkName(event.target.value)} />
-          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <input id="drinkname"  className="form-control mr-sm-2" type="search" placeholder="Find a drink" aria-label="Search" onChange={event => setDrinkName(event.target.value)} />
+          <button style={{border:"#ff914d solid 2px"}} className="btn btn-outline- my-2 my-sm-0" type="submit">Search</button>
           </form>
           :  ''
          }
