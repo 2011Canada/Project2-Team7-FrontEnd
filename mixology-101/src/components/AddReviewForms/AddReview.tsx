@@ -101,7 +101,7 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
           <CssBaseline/>
           <div className={classes.paper}>
 
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h4">
               Add Review
             </Typography>
             <form className={classes.form} noValidate onSubmit={ handleSubmit(submitAddReview)}>
@@ -115,6 +115,7 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
                       name="rate"
                       autoComplete="rate"
                       inputRef={register()}
+                      fullWidth
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -126,6 +127,7 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
                       id="description"
                       autoComplete="description"
                       inputRef={register}
+                      fullWidth
                   />
                 </Grid>
               </Grid>
@@ -135,7 +137,7 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
                   variant="contained"
                   color="primary"
                   className={classes.submit}
-                  
+                  style={{backgroundColor:"#ff914d"}}
               >
                 Submit
               </Button>
