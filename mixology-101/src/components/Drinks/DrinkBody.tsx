@@ -5,11 +5,18 @@ import { Ingredients } from './Ingredients'
 import { Review } from '../review/Review'
 import { Button} from '@material-ui/core'
 import { FavouriteForm } from '../Favourite/Favourite';
+import { red } from '@material-ui/core/colors';
 
 const imageStyle = {
-    width: "20%",
-    height: "250px",
-    margin: "30px 0 30px 30px"
+    width: "12rem",
+    height: "12rem",
+    display: "absolute" as "absolute",
+    top: "50%",
+    left: "50%",
+    // transform: "Translate(-50%, -50%)",
+
+    borderRadius : "50%"
+
 }
 
 const bodyStyle = {
@@ -20,8 +27,26 @@ const bodyStyle = {
 
 
 const contentStyle = {
-    width: "15%",
+    width: "100%",
     margin: "30px 0 0 0"
+}
+
+const drinkInfoStyle = {
+    // width: "100%",
+    // display:"flex"
+
+}
+
+const heartStyle = {
+    position : "absolute" as "absolute",
+    fontSize: "1rem",
+    color: "lightred",
+    top: "29%",
+    left: "56%",
+    zIndex: 1,
+
+
+
 }
 
 
@@ -60,6 +85,7 @@ export class DrinkBody extends React.Component<any,any> {
 
 
         // setting drink info in session
+        let userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
         sessionStorage.setItem("drinkName",  JSON.stringify(name))
         sessionStorage.setItem("drinkdegree",  JSON.stringify(response.degree))
         sessionStorage.setItem("drinkCreatorFirstName",  JSON.stringify(response.drinkCreator.firstname))
@@ -72,43 +98,72 @@ export class DrinkBody extends React.Component<any,any> {
     }
   
    render(){
-      
+    // let isGuest = {userInfo.drinkName === null ? false : true}
+
     let imgUrl = "../img/"+this.state.drinkId+".PNG"
     return(
         <div className="container-fluid" style={bodyStyle}>
+            
+             <div style={heartStyle}>
+             <FavouriteForm/>
+             </div>
+            
             <div >
-                <div className="row">
-                    <img style={imageStyle} className="card-img-top" src={imgUrl} alt="Card image cap" />
-                    <p style={contentStyle}>
-                    Name: <strong > {this.state.drinkName}</strong><br />
-                    Degree:  {this.state.degree}<br />
-                    Ingredient: {this.state.Ingredient}<br />
-                    Creator: {this.state.creator}
-                    </p>
-                    <FavouriteForm/>
+                <div style={drinkInfoStyle} id="drinkInfoStyle" className="row text-center">
+
+                    <div className="col-12 pt-5">
+                        
+                        <img style={imageStyle} className="card-img-top" src={imgUrl} alt="Card image cap" />
+                    </div>
+
+                    <div className="col-12 text-center pb-5" >
+                        <p style={contentStyle}>
+                            
+                        <strong style={{fontSize: "2rem"}}> {this.state.drinkName}</strong>
+                        <br />
+                        <span style={{backgroundColor: "#ff914d"}} className="badge text-dark p-2"> Creator: {this.state.creator}</span>
+                        <br />
+                        
+                        {/* Degree:  {this.state.degree}% */}
+                        
+                        </p>    
+                        
+                    </div>
+    
+
+
+                    
+
+                    
+
                 </div>
             </div>
 
             <div className="container-fluid">
-                <div className="row">
-                <h4 style={{ marginLeft:20, marginTop: 20 }}>** Ingredients **
-                <Button type="submit" variant="outlined" style={btnStyle}>Add</Button>
-                </h4>
-                </div>
-                <div className="row"  style={{ marginLeft:20}}>
+
+                <div style={{backgroundColor:"#ffe5bd", borderRadius:"18px"}} className="py-5">
+                    <h4> Preparation </h4>
+                    <p>Prepare all ingredients. Mix all ingredients:</p>
                     <Ingredients  key={this.state.drinkId} drinkId={this.state.drinkId} />
+                    <p>Add lemon on top</p>
+                    <p>Voila! Enjoy!</p>
+                </div>
+                
+            </div>
+
+
+            <div className="py-5" >
+                <div className="">
+                    <h4>Reviews</h4>
+               
+                    <Button type="submit" variant="outlined" style={btnStyle} href="/add-review">Add</Button>
+                    </div>
+                    <div className="row" >
+                    <Review key={this.state.drinkId} drinkId={this.state.drinkId} drinkName={this.state.drinkName} reviewList={this.state.currentReviewList} creator={this.state.creator}/>
                 </div>
             </div>
-            <div className="container-fluid">
-                <div className="row">
-                <h4 style={{ marginLeft:20, marginTop: 50, marginRight:40}}>** Review ** 
-                <Button type="submit" variant="outlined" style={btnStyle} href="/addReview">Add</Button>
-                </h4>
-                </div>
-                <div className="row" >
-                <Review key={this.state.drinkId} drinkId={this.state.drinkId} drinkName={this.state.drinkName} reviewList={this.state.currentReviewList} creator={this.state.creator}/>
-                </div>
-            </div>
+
+
         </div>
         
     )
@@ -117,5 +172,9 @@ export class DrinkBody extends React.Component<any,any> {
 }
 
 var btnStyle = {
+    
     height: 30,
 };
+
+
+

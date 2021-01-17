@@ -34,9 +34,9 @@ const SearchButtonStyling = {
 }
 
 const profileDivStyling = {
-    backgroundColor: "rgba(0,0,0,0.3)",
+    backgroundColor: "rgba(255,243,205,0.2)",
     borderRadius: "18px",
-    border:"1px solid rgba(255,255,255,0.5)",
+    // borderBottom:"1px solid rgba(255,255,255,0.5)",
     padding: "0"
 }
 
@@ -63,21 +63,27 @@ var   isGuest = true;
   
 
 
-    const getFavorites = async (e:any)=>{
+ 
+        const getFavorites = async (e:any)=>{
         e.preventDefault()
         //console.log("getdrinksbyalcoholcontentSTART")
-        const response = await axios.get(`http://localhost:8080/user/favoriteDrinks/${userInfo.id}`).catch((err)=>{console.log(err)})
-        setFavorites([])
-        
+        if(!isGuest){
+            const response = await axios.get(`http://localhost:8080/user/favoriteDrinks/${userInfo.id}`).catch((err)=>{console.log(err)})
+            setFavorites([])
+            
 
-        if((response && response.data)){
-            // console.log(response.data)
-            setFavorites(response.data)
-            console.log(response.data)
-        } 
+            if((response && response.data)){
+                // console.log(response.data)
+                setFavorites(response.data)
+                console.log(response.data)
+            } 
 
-        getHidden();
+            getHidden();
+        }else{
+            alert("Please login to check your favorite drinks")
+        }
     }
+
 
     const getHidden = ()=>{
         isHidden ? setIsHidden(false) :  setIsHidden(true)
@@ -95,6 +101,10 @@ var   isGuest = true;
     return(
         <div style={barStyle} className="col-12">
             <div className="row p-3">
+
+                <div className="col-sm-1"></div>
+
+
                 <div style={profileDivStyling} className="col-12 col-sm-2 text-center">
                     <img style={imageStyle} src="https://i.pravatar.cc/50" alt="Profile Picture of user"/>
                     <h5>{!isGuest? (userInfo.firstname + "  " + userInfo.lastname) : "Guest"} </h5>
@@ -104,7 +114,7 @@ var   isGuest = true;
 
 
                 {/* SEARCH ALL DRINKS */}
-                <div style={{}} className="col-12 col-sm-3 text-center">
+                <div style={{}} className="col-12 col-sm-2 text-center">
                     <form onSubmit={props.getCall1} style={{height:"100%"}}>
                             <button  style={SearchButtonStyling} type="submit" className="btn btn-success btn-circle btn-xl">
                                 <i className="fa fa-cocktail"></i>
@@ -117,7 +127,7 @@ var   isGuest = true;
 
 
                 {/* SEARCH FAVORITE DRINKS */}
-                <div style={{}} className="col-12 col-sm-3 text-center">
+                <div style={{}} className="col-12 col-sm-2 text-center">
                     <form onSubmit={getFavorites} style={{height:"100%"}}>
                             <button style={SearchButtonStyling} type="submit" className="btn btn-danger btn-circle btn-xl">
                                 <i className="fa fa-heart"></i>
@@ -143,7 +153,7 @@ var   isGuest = true;
 
 
                 {/* SEARCH DRINKS BY ALCOHOL CONTENT */}
-                <div style={{}} className="col-12 col-sm-3 text-center">
+                <div style={{}} className="col-12 col-sm-2 text-center">
 
                     <p className="badge">Alcohol Content</p>  
                     <form onSubmit={props.getCall3} style={{height:"100%"}}>
@@ -184,6 +194,8 @@ var   isGuest = true;
                             <p className="badge">Add Your Drink</p>
                     </form>
                 </div>
+
+                <div className="col-sm-1"></div>
 
             </div>
 

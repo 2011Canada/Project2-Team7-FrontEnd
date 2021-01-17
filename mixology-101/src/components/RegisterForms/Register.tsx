@@ -14,22 +14,7 @@ import MainFooter from '../MainPageComponents/MainFooter';
 
 import { Route } from 'react-router';
 import { Link as RLink } from 'react-router-dom';
-function Copyright() {
-  return (
-    <>
-    <Route path ="/home"/>
-      
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <RLink color="inherit" to = "/home">
-        Mixology-101
-      </RLink>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-    </>
-  );
-}
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -90,7 +75,7 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
     <MainHeader setDrink={setDrink}/>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
+      <div className={classes.paper} style={{height: "61vh"}}>
         
         
         <form style={{backgroundColor: "whitesmoke", height:"40vh"}} className={classes.form} onSubmit ={handleSubmit(submitRegister)}>
@@ -152,16 +137,16 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
           <Button
             type="submit"
             fullWidth
-            variant="contained"
-            color="primary"
+            variant="outlined"
+            // color="secondary"
             className={classes.submit2}
           >
             Sign Up
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Route path = "/home"/> 
-              <RLink to = "/home" >
+              <Route path = "/login"/> 
+              <RLink to = "/login" >
                 Already have an account? Sign in
               </RLink>
             </Grid>
@@ -169,7 +154,7 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
         </form>
       </div>
       <Box mt={4}>
-        <Copyright />
+        {/* <Copyright /> */}
       </Box>
     </Container>
     <MainFooter />

@@ -1,3 +1,4 @@
+import { emphasize } from '@material-ui/core';
 import React from 'react';
 import { reviewList } from '../../remote/mixRemote/mixRemoteFunc'
 
@@ -40,23 +41,28 @@ export class Review extends React.Component<any, any> {
         let returnList = []
 
         for(const [index, value] of this.state.currentReviewList.entries()){
-            returnList.push(<tr><td>{value.id}</td><td>{value.description}</td><td>{value.rate}</td><td>{value.author.username}</td></tr>)
+            // returnList.push(<tr><td>{value.id}</td><td>{value.description}</td><td>{value.rate}</td><td>{value.author.username}</td></tr>)
+
+            
+
+        
+              returnList.push(
+                <>
+                <div className="col-2"></div>
+                    <div className="col-8 my-3 alert-secondary p-3">          
+                        <p className="text-left">
+                            <strong className="text-dark">Rating: {value.rate}/5</strong>
+                            <p className ="text-center">Review: {value.description}</p>
+                            <h6 className ="text-center">By: {value.author.username}</h6>
+                        </p>  
+                    </div>
+                <div className="col-2"></div>
+                </>
+              )
         }
        
         return (
-            <div>
-                 <h5 >DrinkName: {this.state.drinkName}</h5>
-            <table style={{ marginLeft:20}}>
-            <thead>
-                <tr>
-                    <th>REVIEW_ID</th><th>DESCRIPTION</th><th>RATE</th><th>EVALUATOR</th>
-                </tr>
-            </thead>
-            <tbody>
-               {returnList}
-            </tbody>
-            </table>
-        </div>
+            <>{returnList}</>
         )
     }
 }
