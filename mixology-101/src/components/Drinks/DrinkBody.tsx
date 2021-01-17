@@ -5,6 +5,8 @@ import { Ingredients } from './Ingredients'
 import { Review } from '../review/Review'
 import { Button} from '@material-ui/core'
 import { FavouriteForm } from '../Favourite/Favourite';
+import { PopUpForm } from '../PopUpWindow/PopUpForm';
+import { ButtonToolbar } from 'react-bootstrap';
 import { red } from '@material-ui/core/colors';
 
 const imageStyle = {
@@ -60,7 +62,9 @@ export class DrinkBody extends React.Component<any,any> {
             drinkName: "",
             degree: 0,
             Ingredient: ["a","b"],
-            creator: ""
+            creator: "",
+            addModalShow: false
+
         }
     }
 
@@ -98,8 +102,7 @@ export class DrinkBody extends React.Component<any,any> {
     }
   
    render(){
-    // let isGuest = {userInfo.drinkName === null ? false : true}
-
+    let addModalClose = ()=> this.setState({addModalShow:false});  
     let imgUrl = "../img/"+this.state.drinkId+".PNG"
     return(
         <div className="container-fluid" style={bodyStyle}>
@@ -128,13 +131,7 @@ export class DrinkBody extends React.Component<any,any> {
                         
                         </p>    
                         
-                    </div>
-    
-
-
-                    
-
-                    
+                    </div>     
 
                 </div>
             </div>
@@ -150,31 +147,36 @@ export class DrinkBody extends React.Component<any,any> {
                 </div>
                 
             </div>
-
-
+            <div className="container-fluid">
             <div className="py-5" >
-                <div className="">
+                <div className="AddReviewPopup">
                     <h4>Reviews</h4>
                
-                    <Button type="submit" variant="outlined" style={btnStyle} href="/add-review">Add</Button>
+                    <ButtonToolbar>
+                        <Button
+                            style = {{
+                                left: "47%",
+                                translate: 'Translate(0, -50%)'
+                            }}
+                            variant = "outlined"
+                            onClick = {()=> this.setState({addModalShow: true})}
+                        >
+                            Add Review   
+                        </Button>
+                        <PopUpForm
+                            show = {this.state.addModalShow}
+                            onHide ={addModalClose}
+                        />
+                    </ButtonToolbar>
                     </div>
                     <div className="row" >
                     <Review key={this.state.drinkId} drinkId={this.state.drinkId} drinkName={this.state.drinkName} reviewList={this.state.currentReviewList} creator={this.state.creator}/>
                 </div>
             </div>
 
-
+            </div>
         </div>
         
     )
-   }
-
+    }
 }
-
-var btnStyle = {
-    
-    height: 30,
-};
-
-
-

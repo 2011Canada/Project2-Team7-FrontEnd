@@ -13,9 +13,7 @@ import {CreateDrink} from './components/Drinks/AddDrinks/AddDrink'
 import './App.css';
 import MainPage from './components/MainPageComponents/MainPage';
 import {SelectIngredient} from './components/Drinks/AddDrinks/SelectIngredient';
-import {FavouriteForm} from "./components/Favourite/Favourite";
-import {Spring} from 'react-spring/renderprops'
-import Container from './components/Spring/Spring'
+import { PopUpForm } from './components/PopUpWindow/PopUpForm';
 import Index from './components/Index'
 
 
@@ -36,7 +34,8 @@ export default function App() {
           <Route path = "/drinks" component = {DrinkMain} />
           <Route path="/add-review" component  = {AddReviewForm}/>
           <Route path="/add-drink" component  = {CreateDrink}/>
-          <Route path="/select-ingredient" component  = {SelectIngredient}/>  
+          <Route path="/select-ingredient" component  = {SelectIngredient}/>
+         
         </Switch>
       </Router>
     </div>
