@@ -72,6 +72,7 @@ export const FavouriteForm: React.FunctionComponent<any> = () =>{
 
         })
             .then((response)=>{
+                alert("Added to favourites")
                 console.log("succefully submitted your favorite drink!", response.data)
             })
             .catch((err)=>{console.log(err)})

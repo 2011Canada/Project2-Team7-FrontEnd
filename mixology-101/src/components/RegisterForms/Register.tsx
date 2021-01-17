@@ -44,10 +44,17 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
+      marginTop: theme.spacing(10),
+      padding: "1rem",
+      borderRadius: "18px",
+      background: "#38372f",
+      boxShadow:  "20px 20px 60px #ffffff, -20px -20px 60px #161614"
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+  },
+  submit2: {
+    margin: theme.spacing(2, 0, 3),
   },
 }));
 
@@ -85,10 +92,11 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
       <CssBaseline />
       <div className={classes.paper}>
         
-        <Typography component="h1" variant="h4">
+        
+        <form style={{backgroundColor: "whitesmoke", height:"40vh"}} className={classes.form} onSubmit ={handleSubmit(submitRegister)}>
+          <Typography component="h1" variant="h4" className="mb-5">
           Register
         </Typography>
-        <form className={classes.form} onSubmit ={handleSubmit(submitRegister)}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -146,7 +154,7 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            className={classes.submit2}
           >
             Sign Up
           </Button>

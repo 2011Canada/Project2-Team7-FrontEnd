@@ -44,7 +44,7 @@ export class Review extends React.Component<any, any> {
         }
        
         return (
-            <div>
+            <div style={{minHeight: '70vh'}}>
                  <h5 >DrinkName: {this.state.drinkName}</h5>
             <table style={{ marginLeft:20}}>
             <thead>

@@ -5,7 +5,7 @@ import { drinkInfoById } from '../../remote/mixRemote/mixRemoteFunc'
 export class ViewReview extends React.Component<any,any> {
     
     constructor(props:any){
-        console.log("constructor")
+       // console.log("constructor")
         super(props);
         console.log("drinkbody_constructor_props:"+ props.drinkId)
         this.state = {
@@ -20,7 +20,7 @@ export class ViewReview extends React.Component<any,any> {
     
     async componentWillMount() {
        // console.log("componentWillMount")
-            let _drinkId = window.location.href.substr(-1)
+            let _drinkId = window.location.href.substring(29,)
             this.setState({drinkId: _drinkId})
             let res = drinkInfoById(_drinkId)
             res.then((data) =>{

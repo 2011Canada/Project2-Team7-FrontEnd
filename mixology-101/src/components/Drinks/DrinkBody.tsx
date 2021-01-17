@@ -4,6 +4,7 @@ import { drinkInfo } from '../../remote/mixRemote/mixRemoteFunc'
 import { Ingredients } from './Ingredients'
 import { Review } from '../review/Review'
 import { Button} from '@material-ui/core'
+import { FavouriteForm } from '../Favourite/Favourite';
 
 const imageStyle = {
     width: "20%",
@@ -22,7 +23,6 @@ const contentStyle = {
     width: "15%",
     margin: "30px 0 0 0"
 }
-
 
 export class DrinkBody extends React.Component<any,any> {
 
@@ -84,6 +84,7 @@ export class DrinkBody extends React.Component<any,any> {
                     Ingredient: {this.state.Ingredient}<br />
                     Creator: {this.state.creator}
                     </p>
+                    <FavouriteForm/>
                 </div>
             </div>
 
@@ -100,7 +101,11 @@ export class DrinkBody extends React.Component<any,any> {
             <div className="container-fluid">
                 <div className="row">
                 <h4 style={{ marginLeft:20, marginTop: 50, marginRight:40}}>** Review ** 
+
                 <Button type="submit" variant="outlined" style={btnStyle} href="/addReview">Add</Button>
+                    
+
+                
                 </h4>
                 </div>
                 <div className="row" >

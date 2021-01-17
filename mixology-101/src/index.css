@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding:0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: "Yusei Magic", sans-serif, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -13,3 +13,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* @keyframes glowing {
+        0% {
+          background-color: #8deb71;
+          box-shadow: 0 0 5px #81db66;
+        }
+        50% {
+          background-color: #e8b119;
+          box-shadow: 0 0 20px #dbab0e;
+        }
+        100% {
+          background-color: #a81d05;
+          box-shadow: 0 0 5px #a80572;
+        }
+      }
+
+
+#mixologyButton {
+  animation: glowing 1300ms infinite;
+}
+ */
+
+
