@@ -87,7 +87,10 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
 
       })
           .then((response)=>{
+            
+            alert("you successfully added a review.")
             console.log("succefully submitted your review!", response.data)
+            window.location.reload(true);
           })
           .catch((err)=>{console.log(err)})
     }
@@ -132,6 +135,7 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
                   variant="contained"
                   color="primary"
                   className={classes.submit}
+                  
               >
                 Submit
               </Button>

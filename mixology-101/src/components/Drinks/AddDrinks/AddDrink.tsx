@@ -96,11 +96,7 @@ export const CreateDrink: React.FunctionComponent<any> = () =>{
 
         /*
         <div>
-<<<<<<< HEAD
-            <MainHeader setDrink={''}/>
-=======
             <MainHeader setDrink={{}}/>
->>>>>>> uxui
         </div>
         */
     return(
