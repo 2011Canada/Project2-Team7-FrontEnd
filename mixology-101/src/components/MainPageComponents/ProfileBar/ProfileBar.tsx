@@ -66,17 +66,21 @@ var   isGuest = true;
     const getFavorites = async (e:any)=>{
         e.preventDefault()
         //console.log("getdrinksbyalcoholcontentSTART")
-        const response = await axios.get(`http://localhost:8080/user/favoriteDrinks/${userInfo.id}`).catch((err)=>{console.log(err)})
-        setFavorites([])
-        
+        if(!isGuest){
+            const response = await axios.get(`http://localhost:8080/user/favoriteDrinks/${userInfo.id}`).catch((err)=>{console.log(err)})
+            setFavorites([])
+            
 
-        if((response && response.data)){
-            // console.log(response.data)
-            setFavorites(response.data)
-            console.log(response.data)
-        } 
+            if((response && response.data)){
+                // console.log(response.data)
+                setFavorites(response.data)
+                console.log(response.data)
+            } 
 
-        getHidden();
+            getHidden();
+        }else{
+            alert("Plaes login!")
+        }
     }
 
     const getHidden = ()=>{
