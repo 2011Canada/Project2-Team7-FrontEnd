@@ -3,6 +3,19 @@ import axios from "axios";
 import React from "react"
 import { useForm } from "react-hook-form";
 
+
+
+
+     const  formParent = {
+            padding:"1em",
+            backgroundColor:"white",
+            margin: "1em",
+            borderRadius: "18px",
+        // background: "#36352d",
+            boxShadow:  "20px 20px 60px #ffffff, -20px -20px 60px #161614",
+        }
+    
+
 export const AddIngredient:React.FunctionComponent<any> = ()=>{
 
     const {register, handleSubmit} = useForm();
@@ -23,9 +36,12 @@ export const AddIngredient:React.FunctionComponent<any> = ()=>{
         })
         }
 
+
     return(
-        <>  
-            <form onSubmit = {handleSubmit(SubmitIngredient)} >
+        
+        <div style={formParent} className="row">
+            <div className="col-12">
+                 <form style={{}} className = "p-3" onSubmit = {handleSubmit(SubmitIngredient)} >
             <TextField
                 autoComplete="name"
                 name="name"
@@ -37,11 +53,14 @@ export const AddIngredient:React.FunctionComponent<any> = ()=>{
                 fullWidth
                 inputRef = {register}
               />
-            <Button type="submit"  variant="outlined"  fullWidth>
+            <Button style= {{backgroundColor:"#ff914d"}} type="submit"  variant="outlined"  fullWidth>
                     Add Ingredient
             </Button> 
             </form>
-        </>
+            </div>
+        </div>
+           
+    
     )
 }
 

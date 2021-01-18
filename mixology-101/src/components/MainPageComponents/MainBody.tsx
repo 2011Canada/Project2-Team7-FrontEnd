@@ -170,7 +170,7 @@ const MainBody = (props)=>{
             <div className="row">
 
                         <div className="col-12">
-                            {(drinks.length > 0)  && 
+                            {(drinks.length >= 0)  && 
                                 <div style={{}} className="col-12 col-sm-2 ">
                                     <form className="form-inline text-center" onSubmit={handleSubmit(getCall2)}>
                                         <div className="form-group mx-sm-3 mb-2">
