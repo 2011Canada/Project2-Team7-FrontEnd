@@ -39,7 +39,7 @@ export const CreateDrink: React.FunctionComponent<any> = () =>{
     const [select, setSelection] = React.useState([]);
     const [ingredients, setIngredients] = useState([])
     const getIngredients = async ()=>{
-        const response = await axios.get('http://localhost:8080/ingredients').catch((err)=>{console.log(err)})
+        const response = await axios.get('http://3.134.99.157:10000/ingredients').catch((err)=>{console.log(err)})
     
         if (response && response.data){
             setIngredients(response.data)
@@ -55,7 +55,7 @@ export const CreateDrink: React.FunctionComponent<any> = () =>{
 
     const submitDrink = async (data:any)=> {
         console.log(data)
-        await axios.post('http://localhost:8080/drinks',
+        await axios.post('http://3.134.99.157:10000/drinks',
         {
             "degree": data.degree,
             "drinkCreator": {
@@ -79,7 +79,7 @@ export const CreateDrink: React.FunctionComponent<any> = () =>{
     }
 
     const submitRecipe = async (ingredientId, ingredientName, data:any) =>{
-        await axios.post('http://localhost:8080/ingredients/recipe',{
+        await axios.post('http://3.134.99.157:10000/ingredients/recipe',{
         "drink": {
             "degree": data.degree,
             "drinkCreator": {

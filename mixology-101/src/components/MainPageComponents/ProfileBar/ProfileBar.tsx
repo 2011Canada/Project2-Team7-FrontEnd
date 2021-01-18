@@ -68,7 +68,7 @@ var   isGuest = true;
         e.preventDefault()
         //console.log("getdrinksbyalcoholcontentSTART")
         if(!isGuest){
-            const response = await axios.get(`http://localhost:8080/user/favoriteDrinks/${userInfo.id}`).catch((err)=>{console.log(err)})
+            const response = await axios.get(`http://3.134.99.157:10000/user/favoriteDrinks/${userInfo.id}`).catch((err)=>{console.log(err)})
             setFavorites([])
             
 

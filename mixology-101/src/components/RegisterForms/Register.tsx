@@ -52,7 +52,7 @@ export const RegisterForm: React.FunctionComponent<any> = () =>{
  const submitRegister = async (data:any)=>{
  
      console.log(data)
-      await axios.post('http://localhost:8080/user',{
+      await axios.post('http://3.134.99.157:10000/user',{
          "firstname": data.firstname,
          "id": 0,
          "lastname": data.lastname,

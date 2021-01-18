@@ -22,7 +22,7 @@ export const AddIngredient:React.FunctionComponent<any> = ()=>{
 
     const SubmitIngredient = async (data:any)=> {
         console.log(data)
-        await axios.post('http://localhost:8080/ingredients',
+        await axios.post('http://3.134.99.157:10000/ingredients',
         {
             "id": 0,
             "name": data.name,

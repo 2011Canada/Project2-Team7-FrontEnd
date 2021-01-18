@@ -39,7 +39,7 @@ const MainBody = (props)=>{
         setName(dName)
         setFirst(true)
         //setDrinks([])
-        const response =  await axios.get(`http://localhost:8080/drinks/drinkName/${dName}`).catch((err)=>{
+        const response =  await axios.get(`http://3.134.99.157:10000/drinks/drinkName/${dName}`).catch((err)=>{
             console.log(err)
         })
         if(response && response.data){
@@ -99,7 +99,7 @@ const MainBody = (props)=>{
 
 
     const getAllDrinks = async ()=>{
-        const response = await axios.get('http://localhost:8080/drinks').catch((err)=>{console.log(err)})
+        const response = await axios.get('http://3.134.99.157:10000/drinks').catch((err)=>{console.log(err)})
 
         if((response && response.data)){
             
@@ -117,7 +117,7 @@ const MainBody = (props)=>{
 
     const getDrinkByAlcoholContent = async ()=>{
         console.log("getdrinksbyalcoholcontentSTART")
-        const response = await axios.get('http://localhost:8080/drinks').catch((err)=>{console.log(err)})
+        const response = await axios.get('http://3.134.99.157:10000/drinks').catch((err)=>{console.log(err)})
         setDrinks([])
         
 
@@ -143,7 +143,7 @@ const MainBody = (props)=>{
     const getDrinksByIngredientName = async (ing)=>{
         console.log(ingredient, "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
         console.log("START OF  GET DRINK BY ING NAME SEARCH")
-        const response = await axios.get(`http://localhost:8080/drinks/ingredientName/${ing}`).catch((err)=>{console.log(err)})
+        const response = await axios.get(`http://3.134.99.157:10000/drinks/ingredientName/${ing}`).catch((err)=>{console.log(err)})
         setDrinks([])
 
             if((response && response.data)){

@@ -23,7 +23,7 @@ export const AddRecipe:React.FunctionComponent<any> = () =>{
 
     const submitRecipe = async (data:any)=> {
         console.log(data)
-        await axios.post('http://localhost:8080/ingredients/recipe',{
+        await axios.post('http://3.134.99.157:10000/ingredients/recipe',{
         "drink": {
             "degree": drinkDegree,
             "drinkCreator": {

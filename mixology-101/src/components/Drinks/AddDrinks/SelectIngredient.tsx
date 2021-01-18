@@ -65,7 +65,7 @@ const columns: ColDef[] = [
     const [select, setSelection] = React.useState([]);
     const [ingredients, setIngredients] = useState([])
     const getIngredients = async ()=>{
-        const response = await axios.get('http://localhost:8080/ingredients').catch((err)=>{console.log(err)})
+        const response = await axios.get('http://3.134.99.157:10000/ingredients').catch((err)=>{console.log(err)})
     
         if (response && response.data){
             setIngredients(response.data)

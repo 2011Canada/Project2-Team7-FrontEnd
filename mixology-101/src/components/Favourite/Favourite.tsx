@@ -49,7 +49,7 @@ export const FavouriteForm: React.FunctionComponent<any> = () =>{
 
 
      !userInfo && alert("Please Login")
-     userInfo && await axios.post('http://localhost:8080/user/addFavorite',{
+     userInfo && await axios.post('http://3.134.99.157:10000/user/addFavorite',{
 
             "drink": {
             "degree": drinkDegree,
