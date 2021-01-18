@@ -21,7 +21,8 @@ export class ViewReview extends React.Component<any,any> {
     async componentWillMount() {
        // console.log("componentWillMount")
 
-            let _drinkId = window.location.href.substring(33,)
+            let _drinkId = window.location.href.substring(27,)
+            console.log(_drinkId, "<<<<<this is drink ID!!")
             this.setState({drinkId: _drinkId})
             let res = drinkInfoById(_drinkId)
             res.then((data) =>{
@@ -31,6 +32,8 @@ export class ViewReview extends React.Component<any,any> {
                 this.setState({degree: data.degree})
                 //this.setState({Ingredient})
                 this.setState({creator: (data.drinkCreator.firstname +" "+ data.drinkCreator.lastname)})
+
+                console.log(data)
 
             })
     }
