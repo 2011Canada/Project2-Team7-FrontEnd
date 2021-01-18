@@ -1,6 +1,5 @@
 
 //new reg implementation
-import RegisterComponent from './components/RegisterForms/Register2'
 import React, {useState}from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import LoginMain from './components/login/LoginMain';
@@ -13,7 +12,6 @@ import {CreateDrink} from './components/Drinks/AddDrinks/AddDrink'
 import './App.css';
 import MainPage from './components/MainPageComponents/MainPage';
 import {SelectIngredient} from './components/Drinks/AddDrinks/SelectIngredient';
-import { PopUpForm } from './components/PopUpWindow/PopUpForm';
 import Index from './components/Index'
 
 
