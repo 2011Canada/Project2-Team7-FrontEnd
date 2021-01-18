@@ -115,7 +115,8 @@ export const CreateDrink: React.FunctionComponent<any> = () =>{
     <>
 
         <MainHeader setDrink={""}/>
-        <div className ="container" style={{maxWidth: "30%", height: "auto"}}>
+        <div className ="container" style={{maxWidth: "30%", height: "auto"}}> 
+            <AddIngredient/>
             <form style={styles.formStyle} onSubmit = {handleSubmit(submitDrink)} >
                 <h2>Add a new Drink!</h2>
                 <div className="row">
@@ -174,7 +175,7 @@ export const CreateDrink: React.FunctionComponent<any> = () =>{
                     
             
                 </div>
-                <AddIngredient/>
+               
 
                 <Button style={{marginTop:"2rem", backgroundColor:"#ff914d"}}  type="submit" variant="contained" >Create Drink</Button>
 

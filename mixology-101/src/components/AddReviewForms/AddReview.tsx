@@ -114,6 +114,7 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
                       label="Rating"
                       name="rate"
                       autoComplete="rate"
+                      fullWidth
                       inputRef={register()}
                   />
                 </Grid>
@@ -124,6 +125,7 @@ export const AddReviewForm: React.FunctionComponent<any> = () =>{
                       label="Description"
                       type="description"
                       id="description"
+                      fullWidth
                       autoComplete="description"
                       inputRef={register}
                   />
