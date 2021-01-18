@@ -20,7 +20,7 @@ export class ViewReview extends React.Component<any,any> {
     
     async componentWillMount() {
        // console.log("componentWillMount")
-            let _drinkId = window.location.href.substring(29,)
+            let _drinkId = window.location.href.substring(27,)
             this.setState({drinkId: _drinkId})
             let res = drinkInfoById(_drinkId)
             res.then((data) =>{
