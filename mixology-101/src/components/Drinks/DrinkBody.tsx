@@ -69,7 +69,7 @@ export class DrinkBody extends React.Component<any,any> {
     }
 
     async componentWillMount() {
-        let name = window.location.href.substring(27,)
+        let name = window.location.href.substring(26,)
 
         let res = drinkInfoByName(name)
         res.then((data) =>{
