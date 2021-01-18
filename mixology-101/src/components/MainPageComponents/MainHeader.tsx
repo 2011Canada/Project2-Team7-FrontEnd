@@ -56,7 +56,7 @@ var   isGuest = true;
   }
 
     let isHome = false;
-    if(window.location.href.substring(20,) == 'home') isHome = true; 
+    if(window.location.href.substring(26,) == 'home') isHome = true; 
     return(
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-logo"  href="/home"><img style={logoStyle} src={logo2} alt="Image showing logo"/></a>
