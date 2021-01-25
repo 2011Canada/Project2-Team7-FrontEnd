@@ -83,3 +83,5 @@ A Database backed Web-App that allows users (and guests*) to:
 ### ERD
 ![](MixologyERD.png)
 
+## License
+- This project uses the following license: [GNU LICENSE](/LICENSE)
