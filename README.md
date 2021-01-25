@@ -58,6 +58,19 @@ A Database backed Web-App that allows users (and guests*) to:
 > [As a System]
 - Store logs
 
+## Getting Started
+- Windows/Mac Git Clone Command:
+> Git clone https://github.com/2011Canada/Project2-Team7-FrontEnd.git
+- Download and install NPM.  
+> $npm install -g npm
+- Download dependencies
+> ? $npm install
+- Start the program
+> $npm start
+
+
+
+
 
 ### Stretch Goals 
 - Users signed up can share their drinks with other users. 
