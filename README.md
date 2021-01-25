@@ -64,7 +64,7 @@ A Database backed Web-App that allows users (and guests*) to:
 - Download and install NPM.  
 > $npm install -g npm
 - Download dependencies
-> ? $npm install
+> $npm install
 - Start the program
 > $npm start
 
