@@ -4,7 +4,7 @@ Project-2 View for team 7 using React with TypeScript
 ## Project2-Team7-Backend Link
 https://github.com/2011Canada/Project2-Team7-BackEnd
 
-## Description
+## Project Description
 > Mixology-101 is a web-app which aimed to be the hub for cocktail recipe invention and sharing. This allows registered users and guests to take advantage of what the site has to offer; from browsing all creations to viewing and reviewing each drink's ingridient, preparation, rating alcohol content and more. Mixology-101 is built with React and Spring boot at its core and deployed through AWS EC2 instance.
 
 
@@ -21,7 +21,7 @@ A Database backed Web-App that allows users (and guests*) to:
 - Search and filter other creations/recipes *
 - Rate each Recipe/cocktail.
 
-### Technologies
+### Technologies Used
 - React - Ts
 - PostgreSQL
 - Hibernate
@@ -30,7 +30,7 @@ A Database backed Web-App that allows users (and guests*) to:
 - Deployment Front-End (AWS S3)
 - Deployment Server-Side (AWS EC2)
 
-### User Stories
+### Features (As implemented through user stories)
 
 > [In general (guest) ]
 - can filter by alcohol degree(%), rate, ingredient (vodka, gin )
